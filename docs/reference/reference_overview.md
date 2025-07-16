@@ -1,7 +1,7 @@
 # Reference Overview
 The following items provide reference information on topics specific to using emodpy-workflow:
 
-## Projects
+## **Projects**
 
 <p>
 emodpy-workflow is organized around "projects". A "project" is a structured directory containing information related to 
@@ -16,7 +16,7 @@ The minimum required components of a project are detailed below.
 <a id="manifest-py"></a>
 ### manifest.py
 
-**<project_dir>/manifest.py** : This file specifies the pathing needed for the model executable to be run by the built-in 
+**&lt;project_dir&gt;/manifest.py** : This file specifies the pathing needed for the model executable to be run by the built-in 
 commands as well as ingest form location for calibration. For EMOD-HIV, the required attributes (paths) that must be 
 set are:
 
@@ -39,7 +39,7 @@ EMOD-HIV.
 <a id="bin-directory"></a>
 ### bin directory
 
-**<project_dir>/bin** : This is a directory intended to contain model executables and any required files related to their 
+**&lt;project_dir&gt;/bin** : This is a directory intended to contain model executables and any required files related to their 
 basic execution. When running EMOD-HIV, it is automatically created upon simulation creation (as needed) and is the 
 directory that your Eradication binary and schema will be automatically copied/installed into. It is also typically the 
 directory for a user to put any needed container (.sif) files for execution.
@@ -47,59 +47,80 @@ directory for a user to put any needed container (.sif) files for execution.
 <a id="frames-directory"></a>
 ### frames directory
 
-**<project_dir>/frames** : This is a directory that contains the frames in a project, where each frame is a subdirectory. 
+**&lt;project_dir&gt;/frames** : This is a directory that contains the frames in a project, where each frame is a subdirectory. 
 The frames directory will be created automatically as needed by the command new_frame.
 
 <a id="idmtools-ini"></a>
 ### idmtools.ini
 
-The idmtools.ini file configures the idmtools Platform object that manages the creation and running of simulations on 
+**&lt;project_dir&gt;/idmtools.ini** : This file configures the idmtools Platform object that manages the creation and running of simulations on 
 compute resources. All commands that need to communicate with a compute resource (for execution, obtaining files, etc) 
 accepts an idmtools.ini platform block name (e.g. ContainerPlatform) via argument to identify which resource to utilize.
 
 The new_project command will automatically create one that can then be modified. Details of the file 
 format can be found <a href="https://docs.idmod.org/projects/idmtools/en/latest/configuration.html">here</a>.
 
-## Commands
+---
+
+## **Commands**
 
 **All commands are intended to be run in a project directory. This is the directory that directly contains your frames directory, manifest.py, and idmtools.ini file.**
 
 All commands can be run via:
 
-```
-python -m emod_workflow.scripts.COMMAND_NAME_HERE < ARGUMENTS HERE >
+```bash
+python -m emod_workflow.scripts.COMMAND_NAME_HERE <ARGUMENTS_HERE>
 ```
 
 Information on command arguments and their usage is available via:
 
-```
+```bash
 python -m emod_workflow.scripts.COMMAND_NAME_HERE --help
 ```
 
-- new_project
-  - Creates a basic project directory with default files and settings. Platform-specific settings/files may still need 
-  to be set/obtained. 
-- new_frame
-  - Creates a new frame that imports and uses a defined emodpy-hiv country model, which can then be altered or extended.
-- extend_frame
-  - Imports the input builders of an existing frame, which can then be altered or extended (without modifying the 
-  source frame).
-- available_parameters
-  - Lists all currently defined and available hyperparameters of a specified frame. These are 
-available for alteration by a user during calibration and scenarios if they so choose.
-- calibrate
-  - Calibrates a model specified in a frame to its reference data specified in a "calibration ingest form".
-- resample
-  - Selects one or more parameter sets (samples) from a calibration process. These parameter sets are the model 
-  calibration. They can be used later on in scenarios when using the "run" command.
-- run
-  - Runs model simulations. Calibration samples and/or sweeps files can be provided as input as appropriate.
-- download
-  - Obtains specified output file(s) from previously run simulations and puts them into a structured local directory.
-- plot_sims_with_reference
-  - Plots model output against reference data to aid in calibration.
+**new_project**
 
-## Frames
+Creates a basic project directory with default files and settings. Platform-specific settings/files may still need to be
+set/obtained. 
+
+**new_frame**
+ 
+Creates a new frame that imports and uses a defined emodpy-hiv country model, which can then be altered or extended.
+
+**extend_frame**
+
+Imports the input builders of an existing frame, which can then be altered or extended (without modifying the source 
+frame).
+
+**available_parameters**
+
+Lists all currently defined and available hyperparameters of a specified frame. These are available for alteration by a
+user during calibration and scenarios if they so choose.
+
+**calibrate**
+
+Calibrates a model specified in a frame to its reference data specified in a "calibration ingest form".
+
+**resample**
+
+Selects one or more parameter sets (samples) from a calibration process. These parameter sets are the model calibration.
+They can be used later on in scenarios when using the "run" command.
+
+**run**
+
+Runs model simulations. Calibration samples and/or sweeps files can be provided as input as appropriate. 
+
+**download**
+
+Obtains specified output file(s) from previously run simulations and puts them into a structured local directory.
+
+**plot_sims_with_reference**
+
+Plots model output against reference data to aid in calibration.
+
+---
+
+## **Frames**
 
 A frame is a standard input to emodpy-workflow commands that functions as an interface to model input definition, 
 discovery, and execution.
@@ -121,7 +142,7 @@ not strictly necessary to create a frame (they can be "handmade"). A frame simpl
 
 A sample EMOD HIV frame __init__.py generated by the "new_frame" command:
 
-```
+```python
 # This frame built via command:
 # python -m emodpy_workflow.scripts.new_frame
 
@@ -153,8 +174,9 @@ model = EMOD_HIV(
 )
 ```
 
+---
 
-## Sweep Files
+## **Sweep Files**
 
 A sweep file is a Python file that specifies sets of hyperparameter overrides, often referred to as "scenarios". 
 Scenarios address specific scientific questions, typically (but not exclusively) related to predicting the outcome
@@ -165,7 +187,7 @@ These overrides are applied to simulation inputs building of specific frame(s) a
 
 Sweep file format by example:
 
-```
+```python
 # A sweep Python file must contain a 'parameter_sets' attribute, which is a dict with keys being names of
 # frames and values being dicts of param_name:value entries OR a generator of such dicts
 parameter_sets = {

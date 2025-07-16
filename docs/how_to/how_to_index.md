@@ -1,7 +1,7 @@
 # How-tos
 The following list provides helpful snippets on how to do things with emodpy-workflow.
 
-## Make a new project
+## **Make a new project**
 
 To make a new project (directory), execute the following:
 
@@ -11,7 +11,9 @@ python -m emodpy_workflow.scripts.new_project -d DIRECTORY
 
 ... where DIRECTORY is the path to the project directory to create.
 
-## Make a new frame
+---
+
+## **Make a new frame**
 
 To make a new frame of an existing emodpy-hiv country model, execute the following:
 
@@ -22,7 +24,9 @@ python -m emodpy_workflow.scripts.new_frame --country COUNTRY --dest FRAME
 ... where COUNTRY is the country model class name and FRAME is the desired name of the frame to create. The created
 frame will be in the &lt;project_directory&gt;/frames/FRAME directory.
 
-## Extend an existing frame
+---
+
+## **Extend an existing frame**
 
 To extend an existing frame, which imports an existing frame as the starting point of a new frame, execute the 
 following:
@@ -33,7 +37,9 @@ python -m emodpy_workflow.scripts.extend_frame --source SOURCE --dest FRAME
 
 ... where SOURCE is the name of the frame to be extended and FRAME is the name of the frame to create.
 
-## Add additional elements to a frame
+---
+
+## **Add additional elements to a frame**
 
 ### Config
 
@@ -100,7 +106,9 @@ def get_campaign_parameterized_calls(campaign: emod_api.campaign) -> List[Parame
 
 The hyperparameter named **vaccine_efficacy** will now be available for use.
 
-## Replace an element of a frame
+---
+
+## **Replace an element of a frame**
 
 ### Campaign or Demographics
 
@@ -166,7 +174,9 @@ campaign replaced.
 The process for replacing demographics elements is identical, but frames/zambia_modified/demographics.py is edited 
 instead.
 
-## Specify an ingest form for a frame
+---
+
+## **Specify an ingest form for a frame**
 
 The way to specify the ingest form to use for **all** frames in a project is by editing the **ingest_filename** attribute in its
 **manifest.py** file.
@@ -200,7 +210,9 @@ model = EMOD_HIV(
 )
 ```
 
-## List available hyperparameters in a frame
+---
+
+## **List available hyperparameters in a frame**
 
 To find all hyperparameters that are available for use (e.g. calibration, scenario design), execute the following:
 
@@ -210,7 +222,9 @@ python -m emodpy_workflow.scripts.available_parameters -F FRAME
 
 ... where FRAME is the name of the frame to be inspected.
 
-## List duplicative hyperparameters in a frame (intentional or not)
+---
+
+## **List duplicative hyperparameters in a frame (intentional or not)**
 
 To find all hyperparameters that are used **more than once** in a frame, execute the following:
 
@@ -226,7 +240,9 @@ hyperparameter is intended to modify more than one ParameterizedCall value. They
 existing hyperparameter name and label has been inadvertently reused. It is important to confirm that only intentional
 duplication exists to ensure model hyperparameter values are set as expected.
 
-## Calibrate a frame
+---
+
+## **Calibrate a frame**
 
 The basic command to calibrate a frame to reference data in an ingest form using the optim_tool algorithm is:
 
@@ -252,7 +268,9 @@ see parameters for controlling the details of the chosen optimization algorithm,
 python -m emodpy_workflow.scripts.calibrate optim_tool -h
 ```
 
-## Resample a calibration
+---
+
+## **Resample a calibration**
 
 Resampling a calibration is the process of selecting one or more sets of parameters from a calibration. 
 These parameter sets are effectively "a model calibration", the end result of a calibration process. They also contain
@@ -267,7 +285,9 @@ python -m emodpy_workflow.scripts.resample -d CALIBRATION_DIR -m METHOD -n NUMBE
 ... where CALIBRATION_DIR is the directory path of a calibration process that has been performed, METHOD is the
 sampling algorithm, NUMBER is the count of parameter sets to select, and FILE is the file path to write csv results to.
 
-## Create a scenario
+---
+
+## **Create a scenario**
 
 A scenario is a "what if" variation applied on top of a frame configuration. To create a scenario, first create a sweep
 file to define a set of hyperparameter value overrides for the scenario.
@@ -299,7 +319,9 @@ python -m emodpy_workflow.scripts.run -F baseline -p PLATFORM -o OUTPUT -N BaseI
 ... where PLATFORM is the idmtools.ini platform name to run on and  OUTPUT is the directory for storing the run receipt 
 file.
 
-## Create a set of scenarios
+---
+
+## **Create a set of scenarios**
 
 First, please see [Create a scenario](#create-a-scenario). Then use the following for sweeps.py instead, which 
 will create 1 suite containing 3 experiments of 1 simulation, applying the specified overrides to the baseline frame
@@ -333,7 +355,9 @@ python -m emodpy_workflow.scripts.run -F baseline -p PLATFORM -o OUTPUT -N BaseI
 ... where PLATFORM is the idmtools.ini platform name to run on and  OUTPUT is the directory for storing the run receipt 
 file.
 
-## Explore the default behavior of a country model frame
+---
+
+## **Explore the default behavior of a country model frame**
 
 A single simulation of a default county model configuration can be run as follows:
 
@@ -345,7 +369,9 @@ python -m emodpy_workflow.scripts.run -F FRAME -p PLATFORM -o OUTPUT -N SUITE_NA
 PLATFORM is the idmtools.ini platform name to run on, OUTPUT is the directory for storing the run receipt file, and
 SUITE_NAME is a meaningful name/description of suite (of one experiment, of one simulation) for identification.
 
-## Explore hyperparameter sensitivity of a frame
+---
+
+## **Explore hyperparameter sensitivity of a frame**
 
 To create a set of simulations that differ only by the value of a single hyperparameter, first create a sweep file to 
 designate a set of values for the chosen hyperparameter.
@@ -378,7 +404,9 @@ python -m emodpy_workflow.scripts.run -F baseline -p PLATFORM -o OUTPUT -N Basel
 ... where PLATFORM is the idmtools.ini platform name to run on and  OUTPUT is the directory for storing the run receipt 
 file.
 
-## Explore internal variability of a frame
+---
+
+## **Explore internal variability of a frame**
 
 Internal model variability is the variation due solely to the random number sequence used. To create a set of
 simulations with identical configuration but with varied random number sequences (Run_Number hyperparameter), first 
@@ -413,7 +441,9 @@ python -m emodpy_workflow.scripts.run -F baseline -p PLATFORM -o OUTPUT -N Basel
 ... where PLATFORM is the idmtools.ini platform name to run on and  OUTPUT is the directory for storing the run receipt 
 file.
 
-## Run scenarios with a calibrated frame
+---
+
+## **Run scenarios with a calibrated frame**
 
 Running scenarios on top of a calibrated frame requires using the **run** command with both a resampled csv file (from
 the **resample** command) and a scenario sweep file as input. Every parameter set in the resampled csv file will form 
@@ -448,7 +478,9 @@ SUITE_NAME is a meaningful name/description of the suite created. The result wil
 200 simulations (600 simulations in total). Each simulation in a given experiment will use a different calibrated 
 parameter set, overridden by the specific parameters in the corresponding sweeps.py experiment entry..
 
-## Download a file per simulation
+---
+
+## **Download a file per simulation**
 
 There is a single download command to download files from simulations. However, there are multiple ways to specify
 **which** simulations to download files from.
@@ -481,7 +513,7 @@ python -m emodpy_workflow.scripts.download -f output/ReportHIVByAgeAndGender.csv
 ... where RESAMPLE_FILE is the path of a **resample** command result and OUTPUT_DIR is the directory to store downloaded 
 files.
 
-###To download a file from simulations specified in a run receipt file:
+### To download a file from simulations specified in a run receipt file:
 
 ```bash
 python -m emodpy_workflow.scripts.download -f output/ReportHIVByAgeAndGender.csv -p ContainerPlatform -r RECEIPT_FILE
@@ -490,7 +522,9 @@ python -m emodpy_workflow.scripts.download -f output/ReportHIVByAgeAndGender.csv
 ... where RECEIPT_FILE is the path of a receipt created by a prior **run** command. Output will be stored in the
 directory containing the receipt.
 
-## Download multiple files per simulation
+---
+
+## **Download multiple files per simulation**
 
 Downloading more than one file from simulations is a small modification of downloading a single file. For downloading a
 single file, see: [Download a file per simulation](#download-a-file-per-simulation).
@@ -499,5 +533,7 @@ To specify more than one file for download, one specifies **all** files together
 separating them by a **comma with no spaces**.
 
 E.g. to download two files:
+
 ```bash
 -f output/ReportHIVByAgeAndGender.csv,output/InsetChart.json
+```
