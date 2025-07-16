@@ -136,7 +136,7 @@ The other tutorials will do more with these commands and show you more on when a
 [This tutorial](using_frames) will teach you what a frame is, the basics of making them, and how emodpy-workflow uses
 them to define and build model inputs.
 
-## Learn make hyperparameters with ParameterizedCall
+## Learn to make hyperparameters with ParameterizedCall
 
 [This tutorial](using_parameterized_calls.md) will teach you how hyperparameters are defined by ParameterizedCall 
 objects and how to make your own to enable dynamic model changes.
