@@ -1,4 +1,6 @@
-# Learn how to run EMOD
+# Learn how to run EMOD using emodpy-workflow
+
+## Assumptions
 
 - Run_scenarios vs run
 - Run baseline
