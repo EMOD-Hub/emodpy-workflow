@@ -127,35 +127,42 @@ a header with links to everything?
 Please see the [installation guide](../installation.md) for creating a virtual environment and installing emodpy-workflow in it.
 
 
-## Learn about the project related commands
+## 1. Learn about the project related commands
 
 [This tutorial](project_related_commands.md) will introduce you to the set of commands that you can do with emodpy-workflow.
 The other tutorials will do more with these commands and show you more on when and why to use them.
 
-## Learn about frames and model input building
-[This tutorial](using_frames) will teach you what a frame is, the basics of making them, and how emodpy-workflow uses
+## 2. Learn about model input building
+[This tutorial](input_building_process.md) will teach you how EMOD inputs are built in emodpy-workflow.
+
+## 2. Learn about frames and model input building
+[This tutorial](using_frames.md) will teach you what a frame is, the basics of making them, and how emodpy-workflow uses
 them to define and build model inputs.
 
-## Learn to make hyperparameters with ParameterizedCall
+## 3. Learn to make hyperparameters with ParameterizedCall
 
 [This tutorial](using_parameterized_calls.md) will teach you how hyperparameters are defined by ParameterizedCall 
 objects and how to make your own to enable dynamic model changes.
 
-## Learn how to run EMOD
+## 4. Learn how to run EMOD
 
 [This tutorial](running_emod.md) will get you running your first EMOD simulations.  It will combine the above learnings
 to show how easy it is to change parameters, make changes to the campaign, and plot data.
 
-## Brief introduction to Calibration
+## 5. Brief introduction to Calibration
 
 In [this tutorial](calibration_intro.md), you will do your first simple calibration with emodpy-workflow.
 You will learn how to specify reference data and the hyperparameters to calibrate.  However, it is
 not intended to teach the art/science of calibration.
 
-## Learn how to create scenarios and do sweeps
+## 6. Learn how to create scenarios and do sweeps
 
-[This tutorial](scenarios_and_sweeps.md) ... TODO
+[This tutorial](scenarios_and_sweeps.md) will teach you how to define scenarios and hyperparameter sweeps in a Python
+sweep file and use them with the run command.
 
-## Learn how to change the Cascade of Care
+## 7. Learn to configure EMOD reports
+[This tutorial](using_reporters.md) will teach you how to alter what and how EMOD generates output.
+
+## 8. Learn how to change the Cascade of Care
 
 [This tutorial](changing_the_cascade_of_care.md) ... TODO

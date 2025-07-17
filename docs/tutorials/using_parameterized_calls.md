@@ -120,7 +120,9 @@ non_hyperparameters are needed for context. For example:
 ```
 
 The intent of this is to define two hyperparameters named **vaccine_efficacy**, one for nodes 1 and 2 and the second
-for nodes 3 and 4. However, since they share the same name, **vaccine_efficacy**, the **actual** effect is a single
+for nodes 3 and 4. 
+
+**Important!** However, since they share the same name, **vaccine_efficacy**, the **actual** effect is a single
 hyperparameter named **vaccine_efficay** that is applied to **both** ParameterizedCalls at input building time. They
 are tied together.
 
@@ -151,7 +153,7 @@ calibration and scenario purposes are now:
 'vaccine_efficacy--nodes_3_and_4'
 ```
 
-The **'--'**, if present, separates the hyperparameter name (as a function parameter) and its contextual label, if 
+**Important!** The **'--'**, if present, separates the hyperparameter name (as a function parameter) and its contextual label, if 
 defined.
 
 ### 6. Putting it all together (a quiz)
