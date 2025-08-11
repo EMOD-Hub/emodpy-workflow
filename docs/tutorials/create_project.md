@@ -1,4 +1,14 @@
-# Learn about the project related commands
+# Create Project
+
+- a.Explain to the user that they always need to be working within the top level of a project
+- b.Have them create a project and view what is included in a base project
+- c.Point to reference data on projects
+- d.Explain that they need a frame in order to run anything because that is where the simulation is defined
+- e.Explain that they also need a default country model and point to the reference
+- f.Have them create a frame and inspect the files that have been created.
+- g.Explain that the frame is one of the places they can make changes to the simulations configuration.
+- h.Point to reference data on frames
+
 
 ## General command format
 

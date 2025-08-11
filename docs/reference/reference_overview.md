@@ -1,4 +1,4 @@
-# Reference Overview
+# Reference
 The following items provide reference information on topics specific to using emodpy-workflow:
 
 ## **Projects**

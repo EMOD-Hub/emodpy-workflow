@@ -1,5 +1,18 @@
 # Learn how to create scenarios and do sweeps
 
+- a. Explain to sweep a parameter the parameter must be first be “available”.  Tell the user to do the “Using ParameterizedCalls” tutorial first.
+- b. Use the available_parameters command to see the list of parameters that can be swept
+- c. Explain that in the run command that one of the arguments is a sweeps file.
+- d. Tell the user to read the reference on the sweep file.
+- e. Download and open the sweep_formation_rate.py file
+- i. The file should have different experiments for different rates, but each experiment should sweep a handful of Run_Numbers
+- f. Tell the user to read the comments in the file
+- g. Run the sweep
+- h. Use the download command to download the InsetChart of each experiment
+- i. Use plot_inset_chart_mean_compare to plot all three experiments
+
+
+
 ## **What is a scenario or sweep?**
 
 A scenario (sweep) is a set of hyperparameters and values that will be applied to a frame. One can think of them as 

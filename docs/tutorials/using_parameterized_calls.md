@@ -1,5 +1,19 @@
 # ParameterizedCalls: what are they and how to use them
 
+- a. Explain that before you can sweep or calibrate parameters they need to be “available”.
+- b. Use available_parameters to show the current list of parameters for baseline
+- c. Explain that a parameter becomes available by using ParameterizedCall and putting it in the list of parameters for that EMOD object (config, campaign, demographics)
+- d. Explain that instead of editing the initialize_XXX() methods we want to edit the get_XXX_parameterized_calls() methods to our new parameter is ni the list.
+- e. Use extend_frame to create pc_base_infectivity
+- f. Tell the user to read the reference on ParameterizedCall
+- g. Edit pc_base_infectivity/get_config_parameterized_calls() by adding a new ParameterizedCall for Base_Infectivity that does not change the default
+    - i. Explain you can change the default or only override
+    - ii. Explain that you cannot have different config parameters for different nodes
+- h. Use the available_parameters command and find the new Base_Infectivty parameter in the list
+
+
+
+
 A ParameterizedCall is a mapping of a hyperparameter names (strings) to specific locations in the model input building
 process. These mappings are used to map hyperparameter values to model changes during input build time, e.g., during
 model calibration or scenario running.

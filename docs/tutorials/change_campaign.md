@@ -5,15 +5,12 @@
 
 The **campaign** is the primary mechanism in EMOD for introducing changes in the simulation over time. It defines when, where, and to whom interventions are delivered. Through campaigns, we simulate programmatic activities such as HIV testing, ART initiation, PrEP rollout, and more. Campaigns control behavior through event-based triggers, targeting criteria, and time-based schedules.
 ToDo: add more information about campaigns.
----
 
 ## Cascade of Care in the HIV Health System
 (Explain how it comes with “cascade of care” that includes a model of an HIV health system)
 
 The **cascade of care (CoC)** in `emodpy-hiv` models the journey of individuals through the HIV care continuum. 
 ToDo: add more infotmation for CoC.
-
----
 
 ## Create a baseline frame with no health system
 
@@ -25,7 +22,6 @@ python -m hiv_workflow.scripts.extend_frame --source baseline --dest no_health_s
 
 This copies the `baseline` configuration and allows you to remove or simplify the CoC logic in `no_health_system`.
 
----
 
 ## Run EMOD
 
@@ -34,7 +30,6 @@ python -m hiv_workflow.scripts.run -N NoHealthSystem -F no_health_system -o resu
 ```
 
 Todo: reference to previous "Run EMOD" section.
----
 
 ## Plot InsetChart and compare to baseline
 
@@ -52,22 +47,17 @@ python -m emodpy_hiv.plotting.plot_inset_chart -d ./InsetChart -t "InsetChart-no
 
 This helps assess how removing the health system affects prevalence, incidence, and other metrics.
 
----
-
-# ToDo: Update titles for the following sections
+**ToDo: Update titles for the following sections**
 ## Explain that sometimes you want to include a change in care without getting into the details of how it is delivered
 
 You may want to simulate a **change in outcomes** (e.g., introducing a vaccine) without modeling every step in the delivery system.
 ToDo: TBD.
----
 
 ## Use extend_frame to create vaccine_using_tracker
 
 ```bash
 python -m hiv_workflow.scripts.extend_frame --source baseline --dest vaccine_using_tracker
 ```
-
----
 
 ## Add a HIV Vaccine using reference tracker
 
@@ -107,8 +97,6 @@ def get_campaign_parameterized_calls(campaign):
     return parameterized_calls
 ```
 
----
-
 ## Run EMOD
 
 ```bash
@@ -116,8 +104,6 @@ python -m hiv_workflow.scripts.run -N VaccineTracker -F vaccine_using_tracker -o
 ```
 - Check that 'vaccine_efficacy' becomes a hyperparameters for Campaign. TBD
 - Check that ControlledVaccine is added to campaign,.json. TBD
-
----
 
 ## Plot InsetChart, compare to baseline, and show prevalence drops but costs go up
 
@@ -129,13 +115,11 @@ python -m emodpy_hiv.plotting.plot_inset_chart -d ./InsetChart -t "InsetChart-va
 
 ToDo: Add screenshots of InsetChart comparing baseline and vaccine_using_tracker, and show prevalence drops but costs go up
 
-### i. Consider also plotting ReportHIVByAgeAndGender so you can look at prevalence across age groups
+## i. Consider also plotting ReportHIVByAgeAndGender so you can look at prevalence across age groups
 
 ```bash
 python -m emodpy_hiv.plotting.plot_hiv_by_age_and_gender ./ReportHIVByAgeAndGender/ -p prevalence -a -m -o images
 ```
-
----
 
 ## Explain that sometimes you want to change how the health system works in the future say by distributing the vaccine when a person sexually debuts
 
@@ -143,22 +127,16 @@ For more control, modify the health system logic directly. For example, distribu
 
 Instructions: TBD.
 
----
-
 ## Explain what a country model is and how subclassing it allows you to override functionality in it
 
 A **country model** in `emodpy-hiv` encapsulates campaign logic specific to a setting (e.g., Zambia). Subclassing allows you to override methods like `add_state_HCTUptakeAtDebut()` to customize intervention logic.
 ToDo: add more information about country models.
-
----
 
 ## Use extend_frame to create modified_coc
 
 ```bash
 python -m hiv_workflow.scripts.extend_frame --source baseline --dest modified_coc
 ```
-
----
 
 ## In the modified_coc directory, create a country model subclass that overrides HCT Update at Debut and distributes the vaccine when they debut
 
@@ -265,19 +243,13 @@ class Eswatini(Country):
 
 - todo: make a new frame with this country model.
 
----
-
 ## Run EMOD
 
 TBD
 
----
-
 ## Plot InsetChart and compare against baseline and the vaccine distributed by reference tracker
 
 TBD
-
----
 
 ## Plot prevalence in ReportHIVByAgeAndGender across ages to see how it takes a while before we see prevalence drop in the older groups
 
