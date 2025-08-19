@@ -34,7 +34,16 @@ nav: # Navigation structure for the documentation
   # - What's New: whatsnew.md 
   - installation.md # including the topic title is optional
   - reference/reference_overview.md
-  - how_to/how_to_index.md # if there is no index parent topic, you must declare the title explicitly
+  - How-to:
+    - how_to/how_to_index.md
+    - how_to/how_to_make_project.md
+    - how_to/how_to_create_frame.md
+    - how_to/how_to_use_elements_in_frame.md
+    - how_to/how_to_list_hyperparameters.md
+    - how_to/how_to_run.md
+    - how_to/how_to_calibrate_frame.md
+    - how_to/how_to_sweep.md
+    - how_to/how_to_download_data.md
   - Tutorials: # this creates a section in the TOC
     - tutorials/get_started.md
     - tutorials/create_project.md
