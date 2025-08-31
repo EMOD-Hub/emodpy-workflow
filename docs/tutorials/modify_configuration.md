@@ -1,4 +1,4 @@
-# Change a configuration parameter
+# Modify Configuration Parameter
 
 - a. Explain how configuration parameters are simulation wide parameters.
 - b. Explain how settings in other areas (campaign and demographics) can impact configuration parameters and vice versa.

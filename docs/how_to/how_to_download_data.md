@@ -2,8 +2,7 @@
 There is a single download command to download files from simulations. However, there are multiple ways to specify
 **which** simulations to download files from.
 
-The following examples assume one wishes to download file: output/ReportHIVByAgeAndGender.csv ... on platform: 
-ContainerPlatform .
+The following examples show ho to download file **output/ReportHIVByAgeAndGender.csv** on the Container Platform.
 
 ## From an experiment:
 
@@ -29,7 +28,7 @@ To download a report file from all simulations in a suite of experiments, execut
 
 ---
 
-## From a resampled parameter sets csv file:
+## From a resampled parameter set's CSV file:
 
 To download a report file from all simulations where you used a resampled parameter set, execute a command similar to the following:
 
@@ -37,7 +36,7 @@ To download a report file from all simulations where you used a resampled parame
 python -m emodpy_workflow.scripts.download -f output/ReportHIVByAgeAndGender.csv -p ContainerPlatform -o OUTPUT_DIR -s RESAMPLE_FILE
 ```
 
-... where RESAMPLE_FILE is the path of a **resample** command result and OUTPUT_DIR is the directory to store downloaded 
+... where RESAMPLE_FILE is the path of a `resample` command result and OUTPUT_DIR is the directory to store downloaded 
 files.
 
 ---
@@ -51,7 +50,7 @@ To download a report file from a receipt file, execute a command similar to the 
 python -m emodpy_workflow.scripts.download -f output/ReportHIVByAgeAndGender.csv -p ContainerPlatform -r RECEIPT_FILE
 ```
 
-... where RECEIPT_FILE is the path of a receipt created by a prior **run** command. Output will be stored in the
+... where RECEIPT_FILE is the path of a receipt created by a prior `run` command. Output will be stored in the
 directory containing the receipt.
 
 ---
@@ -61,7 +60,7 @@ directory containing the receipt.
 Downloading more than one file from simulations is a small modification of downloading a single file. For downloading a
 single file, see: [Download a file from all simulations in an experiment](#download-a-file-from-all-simulations-in-an-experiment).
 
-To specify more than one file for download, one specifies **all** files together as the value of the **-f flag**, 
+To specify more than one file for download, one specifies **all** files together as the value of the `-f flag`, 
 separating them by a **comma with no spaces**.
 
 For example, to download two files change the following:

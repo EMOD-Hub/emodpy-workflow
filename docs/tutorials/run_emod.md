@@ -22,7 +22,7 @@ If you do not, please see [Installing Docker](../reference/installing_docker) fo
 Before you can run EMOD, you must have an emodpy-workflow project and a frame.
 If you don't have these, please see [Create project](create_project).
 
-## Controlling how and where to run EMOD
+## Control how and where EMOD runs
 
 Before we can start using the "run" command, we first need to know where we can control
 the what and where EMOD runs.  The [manifest.py](../reference/manifest) file is used by
@@ -31,19 +31,19 @@ the executable binary to run in, to specify any simulation post processing scrip
 The [idmtools.ini](../reference/idmtools) file is used to specify how EMOD is run on
 different platforms, where a "platform" is a computing device like an HPC or laptop.
 
-### manifest.py
+### View manifest.py
 
-1. Open the manifest.py file in the root of your project directory.
-2. On about line 39, you should see a variable called "executable_path".  This tells
+1. In the root of your project directory, open the `manifest.py` file.
+2. On about line 39, you should see a variable called `executable_path`.  This tells
 emodpy-workflow where to get the EMOD executable binary.
 3. Just below that you should also see a variable called "asset_collection_of_container".
 This is variable is used by emodpy-workflow to know what container to run EMOD in.
 (Containers reduce your need to install everything needed to run EMOD.)
 4. For more information see [manifest.py](../reference/manifest).
 
-### idmtools.ini
+### View idmtools.ini
 
-1. Open the idmtools.ini in the root of your project directory.
+1. In the root of your project directory, open the `idmtools.ini` file.
 2. Towards the top of the file, you should see something similar to the following:
 
     ```
@@ -56,7 +56,7 @@ This is variable is used by emodpy-workflow to know what container to run EMOD i
 of type "Container" and that simulation jobs should go in to the "emodpy-jobs" directory.
 4. For more information see [idmtools.ini](../reference/idmtools).
 
-## Create a 'results' directory
+## Create a `results` directory
 
 Since we will be running EMOD multiple times, it is handy to put the results into their
 own directory.
@@ -69,9 +69,9 @@ own directory.
 
     This should create a directory called 'results' in your project directory.
 
-## Using the "run" command
+## Using the `run` command
 
-To run EMOD, we will use the emodpy-workflow run command.
+To run EMOD, we will use the emodpy-workflow `run` command.
 
 1. Execute the following command in the root of your project (the directory that contains the manifest.py file).
 
@@ -163,8 +163,9 @@ To run EMOD, we will use the emodpy-workflow run command.
     Done with model experiment creation.
     ```
 
-    __Please note that this means that the simulations have been submitted to start running.
-    It does not mean they are done.__
+    !!! Note
+        This means that the simulations have been submitted to start running.
+        It does not mean they are done.
 
 ## Get status on your experiment
 
@@ -200,12 +201,13 @@ RUNNING (0)
 PENDING (0)
 ```
 
-__Please note that this only works when using the Container Platform.  To see status
-when using other platforms, please see the
-[Command Line Interface documentation](https://docs.idmod.org/projects/idmtools/en/latest/cli/cli_index.html)
- for your platform.__
+!!! Note
+    This only works when using the Container Platform.  To see status
+    when using other platforms, please see the
+    [Command Line Interface documentation](https://docs.idmod.org/projects/idmtools/en/latest/cli/cli_index.html)
+    for your platform.
 
-## The files produced when running EMOD
+## View the files produced when running an experiment
 
 When using the Container and SLURM platforms, you can access the directories where the
 experiments and simulations are running.  In our case, we are using the Container Platform
@@ -215,11 +217,16 @@ associated with running the experiment and simulations.  Let's go investigate.
 
 1. From the main project directory execute the following commands:
 
-    ```
-    cd emodpy-jobs
-    ls
-    ```
-    Note: Use "dir" on Windows instead of "ls"
+    === "Windows"
+        ```
+        cd emodpy-jobs
+        dir
+        ```
+    === "Linux"
+        ```
+        cd emodpy-jobs
+        ls
+        ```
 
     You should see something similar to:
 
@@ -246,11 +253,16 @@ associated with running the experiment and simulations.  Let's go investigate.
 2. Look in the this directory by executing commands similar to the
 following - your directory name is likely different:
 
-    ```
-    cd my_first_suite_2cf29edc-6b4d-459b-9542-3eae5c59a151
-    ls
-    ```
-    Note: Use "dir" on Windows instead of "ls"
+    === "Windows"
+        ```
+        cd my_first_suite_2cf29edc-6b4d-459b-9542-3eae5c59a151
+        dir
+        ```
+    === "Linux"
+        ```
+        cd my_first_suite_2cf29edc-6b4d-459b-9542-3eae5c59a151
+        ls
+        ```
 
     You should see something similar to the following:
 

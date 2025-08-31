@@ -31,9 +31,15 @@ theme:
 
 nav: # Navigation structure for the documentation
   - Home: index.md # the rest of the nav illustrates a typical doc structure
-  # - What's New: whatsnew.md 
   - installation.md # including the topic title is optional
-  - reference/reference_overview.md
+  - Reference:
+    - reference/reference_overview.md
+    - reference/commands.md
+    - reference/projects.md
+    - reference/frames.md
+    - reference/ingest_form.md
+    - reference/sweeps.md
+    - reference/dtktools_comparison.md
   - How-to:
     - how_to/how_to_index.md
     - how_to/how_to_make_project.md
@@ -48,10 +54,10 @@ nav: # Navigation structure for the documentation
     - tutorials/get_started.md
     - tutorials/create_project.md
     - tutorials/run_emod.md
-    - tutorials/change_reports.md
-    - tutorials/change_configuration.md
-    - tutorials/change_demographics.md
-    - tutorials/change_campaign.md
+    - tutorials/modify_reports.md
+    - tutorials/modify_configuration.md
+    - tutorials/modify_demographics.md
+    - tutorials/modify_campaign.md
     - tutorials/using_parameterized_calls.md
     - tutorials/sweep_parameter.md
     - tutorials/run_calibration.md

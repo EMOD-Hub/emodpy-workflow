@@ -1,4 +1,4 @@
-# Change Reports
+# Modify Reports
 
 - a. Explain how EMOD extracts data using a thing we call reports.
 - b. Explain that reports can be configured to collect specific data and to keep file sizes down

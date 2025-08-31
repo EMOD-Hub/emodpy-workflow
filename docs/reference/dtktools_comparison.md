@@ -1,19 +1,19 @@
-# **Comparison with older HIV dtk-tools workflow**
+# emodpy-workflow vs DtkTools
 
 If you have already been using EMOD-HIV via DtkTools, this overview will explain
 what is the same and what is different.
 
 Even though emodpy-workflow is designed to be a general workflow tool, its development
-was driven by the need to port the pre-existing EMOD-HIV workflow tools using dtk-tools
+was driven by the need to port the pre-existing EMOD-HIV workflow tools using DtkTools
 to idmtools and emodpy. As such, every feature of the prior workflow has been replicated.
-There is nothing that could be done in dtk-tools that cannot be done with emodpy-workflow.
+There is nothing that could be done in DtkTools that cannot be done with emodpy-workflow.
 
-For those already familiar with the dtk-tools EMOD-HIV workfow, this section highlights 
+For those already familiar with the DtkTools EMOD-HIV workfow, this section highlights 
 the correspondence of its components and features with those of emodpy-workflow. 
 **Bolded** items have changed the most.
 
 
-| dtk-tools | emodpy-workflow |
+| DtkTools | emodpy-workflow |
 | --- | --- |
 | EMOD JSON input files | **country models** (from emodpy-hiv) |
 | directories of templated JSON input files | **frames** |
@@ -25,14 +25,15 @@ the correspondence of its components and features with those of emodpy-workflow.
 | run_scenarios.py (scenario running tool) | built-in run and download commands |
 | scenarios.csv | **sweeps.py file format** |
 
-### Country Models
+### Country models
 
 Country models are Python classes that define the default "baseline" behavior of an
 EMOD-HIV configuration. They often correspond to countries, but can be localized
 regions of interest. They contain all information (Python functions) needed to build
 a default set of EMOD-HIV inputs (config, demographics, campaign).
 
-Country models are standard **Python code** and live in the emodpy-hiv repository.
+Country models are standard **Python code** and live in the
+[emodpy-hiv repository](https://github.com/EMOD-Hub/emodpy-hiv).
 Usage of country models in a project is the domain of **frames**.
 
 ### Frames
@@ -45,10 +46,12 @@ eliminate inconsistencies. With JSON, one had to copy and modify files, creating
 duplicate information that could desynchronize.
 
 For example, one could have a **baseline** frame and several **scenario** frames
-that import the baseline and then add campaign interventions. **Updating any frame
-automatically updates all dependent frames**.
+that import the baseline and then add campaign interventions.
 
-### Parameterized Calls
+!!! note "Warning"
+    Updating any frame automatically updates all dependent frames.
+
+### Parameterized calls
 
 ParameterizedCalls are Python objects that directly replace the functionality of
 JSON KP tags. ParameterizedCall objects let a user define a "hyperparameter"
@@ -57,7 +60,7 @@ input building code to allow modification during calibration and scenarios.
 Users can add contextual labels to ParameterizedCalls to distinguish very specific
 values as could be done with KP tags.
 
-e.g., instead of this KP-tagged parameter name:
+For example, instead of this KP-tagged parameter name:
 
 ```
 Society__KP_Central.TRANSITORY.Relationship_Parameters.Condom_Usage_Probability.Max 
@@ -74,7 +77,7 @@ condom_usage_max--COMMERCIAL-Central
 One can also tie multiple values together by reusing (in Python code) a hyperparameter
 name with identical context.
 
-e.g., one could define and reuse a ParameterizedCall hyperparameter that connects to
+For example, one could define and reuse a ParameterizedCall hyperparameter that connects to
 each model node individually
 
 ```
@@ -97,15 +100,15 @@ The **only** sheet in an older ingest form that would need updating for use is t
 - **map_to** column can be present but now **ignored**
 - **name** column values will need updating to new hyperparameter names from old KP-tag parameter names.
 
-### Sweep Files
+### Sweep files
 
-Scenario csv files (e.g. scenarios.csv) has been replaced with a new sweep Python
+Scenario CSV files (like scenarios.csv) has been replaced with a new sweep Python
 file format. Instead of rows of parameter overrides with parameter-named columns,
 one defines lists of hyperparameter/value dictionary overrides.  Because the file
 is Python instead of csv, one can utilize code to simplify the generation of complex
 or repetitive sets of overrides.
 
-e.g. instead of:
+For example, instead of:
 ```
 Scenario,Campaign,Base_Infectivity
 baseline,campaign.json,
@@ -126,6 +129,3 @@ parameter_sets = {
     }
 }
 ```
-
-TODO: Do we need the format of this file (as a list of links to tutorials) given
-the base template of the docs having a header with links to everything?

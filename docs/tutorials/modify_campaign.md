@@ -1,4 +1,4 @@
-# Change the campaign
+# Modify Campaign
 
 ## Campaign Basics
 (Explain how the campaign is the main tool for controlling how the simulation changes over time)
@@ -50,7 +50,7 @@ This helps assess how removing the health system affects prevalence, incidence, 
 **ToDo: Update titles for the following sections**
 ## Explain that sometimes you want to include a change in care without getting into the details of how it is delivered
 
-You may want to simulate a **change in outcomes** (e.g., introducing a vaccine) without modeling every step in the delivery system.
+You may want to simulate a **change in outcomes** (like introducing a vaccine) without modeling every step in the delivery system.
 ToDo: TBD.
 
 ## Use extend_frame to create vaccine_using_tracker
@@ -65,7 +65,7 @@ Modify `campaign.py` to include a function that adds a vaccine intervention usin
 - a vaccine with efficacy = 100% starting in 1990, scaling up to 60% by 2005.
 - targeting HIV-negative individuals only.
 
-```python
+```python linenums="1"
 from emodpy_hiv.campaign.individual_intervention import ControlledVaccine
 from emodpy_hiv.campaign.distributor import add_intervention_reference_tracking
 from emodpy_hiv.campaign.common import ValueMap
@@ -88,7 +88,8 @@ def add_hiv_vaccine(campaign, vaccine_efficacy=1.0):
     return campaign
 ```
 In campaign.py, add the following line in the appropriate place to call the function.
-```python
+
+```python linenums="1"
 def get_campaign_parameterized_calls(campaign):
     parameterized_calls = source_frame.model.campaign_parameterizer(campaign=campaign)
     # Add any additional ParameterizedCalls here
@@ -129,7 +130,9 @@ Instructions: TBD.
 
 ## Explain what a country model is and how subclassing it allows you to override functionality in it
 
-A **country model** in `emodpy-hiv` encapsulates campaign logic specific to a setting (e.g., Zambia). Subclassing allows you to override methods like `add_state_HCTUptakeAtDebut()` to customize intervention logic.
+A **country model** in `emodpy-hiv` encapsulates campaign logic specific to a setting (like Zambia).
+Subclassing allows you to override methods like `add_state_HCTUptakeAtDebut()` to customize intervention logic.
+
 ToDo: add more information about country models.
 
 ## Use extend_frame to create modified_coc
@@ -142,8 +145,7 @@ python -m hiv_workflow.scripts.extend_frame --source baseline --dest modified_co
 
 Example `eswatini.py`:
 
-```python
-
+```python linenums="1"
 # import necessary modules
 class Eswatini(Country):
     country_name = "eSwatini"
@@ -238,7 +240,7 @@ class Eswatini(Country):
         return (
             coc.HCT_TESTING_LOOP_TRIGGER,  # return the trigger for the HCTTestingLoop state
             coc.HCT_UPTAKE_POST_DEBUT_TRIGGER_1
-        )                                                                                                                new_property_value=hct_upate_at_debut_pv))
+        ) new_property_value=hct_update_at_debut_pv))
 ```
 
 - todo: make a new frame with this country model.

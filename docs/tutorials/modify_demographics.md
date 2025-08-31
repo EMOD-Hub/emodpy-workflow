@@ -1,4 +1,4 @@
-# Change the demographics
+# Modify Demographics
 
 - a. Explain how demographics contains the spatial parameters
 - b. Explain how demographics contains population parameters like births and deaths, but also parameters that control sexual relationships.

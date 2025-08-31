@@ -2,7 +2,7 @@
 
 ## List available hyperparameters
 
-To find all hyperparameters that are available for use (e.g. calibration, scenario design), execute the following:
+To find all hyperparameters that are available for use (like calibration, scenario design), execute the following:
 
 ```bash
 python -m emodpy_workflow.scripts.available_parameters -F FRAME

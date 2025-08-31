@@ -6,11 +6,17 @@ of creating, calibrating, running, and obtaining output from EMOD-HIV model scen
 Teams of users can more easily work with each other's projects using emodpy-workflow as it
 provides standard way of using EMOD-HIV.
 
+## Other related documentation
+
+- [emodpy-hiv]()
+- [EMOD-HIV](https://docs.idmod.org/projects/emodpy-hiv/en/latest/)
+- [idmtools](https://docs.idmod.org/projects/idmtools/en/latest/index.html)
+
 ## Community
 
-The EMOD Community is made up of researchers and software developers, primarily focused on
+The EMOD community is made up of researchers and software developers, primarily focused on
 malaria and HIV research. We value mutual respect, openness, and a collaborative spirit.
-If these values resonate with you, we invite you to join our EMOD Slack Community by
+If these values resonate with you, we invite you to join our EMOD Slack community by
 completing this form:
 
 [https://forms.office.com/r/sjncGvBjvZ](https://forms.office.com/r/sjncGvBjvZ)
