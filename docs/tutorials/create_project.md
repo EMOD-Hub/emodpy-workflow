@@ -32,7 +32,7 @@ python -m emodpy_workflow.scripts.new_project -h
 
 You should see output similar to the following:
 
-```
+```doscon
 usage: new_project.py [-h] -d DEST_DIR
 
 optional arguments:
@@ -67,21 +67,32 @@ Let's look into the directory that was just created and learn about what is in i
 
 1. Look at what is in our training directory by executing the following command:
 
-    ```
-    dir
-    ```
+    === "Windows"
+        ```doscon
+        dir
+        ```
+    === "Linux"
+        ```bash
+        ls -l
+        ```
 
     You should see something similar to the following:
 
-    ```
+    === "Windows"
+        ```doscon
+        Directory of C:\work\my_tutorial
 
-    Directory of C:\work\my_tutorial
-
-    08/12/2025  09:28 AM    <DIR>          .
-    08/12/2025  09:28 AM    <DIR>          ..
-    08/11/2025  09:49 AM    <DIR>          env
-    08/11/2025  09:54 AM    <DIR>          my_project
-    ```
+        08/12/2025  09:28 AM    <DIR>          .
+        08/12/2025  09:28 AM    <DIR>          ..
+        08/11/2025  09:49 AM    <DIR>          env
+        08/11/2025  09:54 AM    <DIR>          my_project
+        ```
+    === "Linux"
+        ```doscon
+        total 8
+        drwxrwxr-x 5 dbridenbecker dbridenbecker 4096 Sep  4 19:48 env
+        drwxrwxr-x 3 dbridenbecker dbridenbecker 4096 Sep  4 19:49 my_project
+        ```
 
     - `env` - This folder is the one that contains our Python virtual environment.
     It contains all of the Python tools we need for running EMOD, plotting data, etc.
@@ -91,23 +102,38 @@ Let's look into the directory that was just created and learn about what is in i
 
 2. Look at what is in the project directory by executing the following commands:
 
-    ```
-    cd my_project
-    dir
-    ```
+    === "Windows"
+        ```doscon
+        cd my_project
+        dir
+        ```
+    === "Linux"
+        ```bash
+        cd my_project
+        ls -l
+        ```
 
     You should see something similar to the following:
 
-    ```
-    Directory of C:\work\my_tutorial\my_project
+    === "Windows"
+        ```doscon
+        Directory of C:\work\my_tutorial\my_project
 
-    08/12/2025  10:37 AM    <DIR>          .
-    08/12/2025  10:37 AM    <DIR>          ..
-    08/08/2025  02:41 PM             1,267 idmtools.ini
-    08/11/2025  09:54 AM             3,542 manifest.py
-    08/11/2025  09:54 AM               355 __init__.py
-    08/11/2025  09:54 AM    <DIR>          __pycache__
-    ```
+        08/12/2025  10:37 AM    <DIR>          .
+        08/12/2025  10:37 AM    <DIR>          ..
+        08/08/2025  02:41 PM             1,267 idmtools.ini
+        08/11/2025  09:54 AM             3,542 manifest.py
+        08/11/2025  09:54 AM               355 __init__.py
+        08/11/2025  09:54 AM    <DIR>          __pycache__
+        ```
+    === "Linux"
+        ```doscon
+        total 16
+        -rw-rw-r-- 1 dbridenbecker dbridenbecker 1267 Sep  4 19:49 idmtools.ini
+        -rw-rw-r-- 1 dbridenbecker dbridenbecker  355 Sep  4 19:49 __init__.py
+        -rw-rw-r-- 1 dbridenbecker dbridenbecker 3542 Sep  4 19:49 manifest.py
+        drwxrwxr-x 2 dbridenbecker dbridenbecker 4096 Sep  4 19:49 __pycache__
+        ```
 
     - `idmtools.ini` - This file contains information about the computing platforms
     where you are running EMOD like where you want the simulation files to be created.
@@ -141,7 +167,7 @@ country model.
 
     You should see something similar to the following:
 
-    ```
+    ```doscon
     (env) C:\work\my_tutorial\my_project>python -m emodpy_workflow.scripts.new_frame -h
     usage: new_frame.py [-h] --country COUNTRY_MODEL --dest DEST_FRAME
 
@@ -163,8 +189,7 @@ country model.
 
     When the command is finished, you should see output similar to the following:
 
-    ```
-    (env) C:\work\my_tutorial\my_project>python -m emodpy_workflow.scripts.new_frame --country ZambiaForTraining --dest baseline
+    ```doscon
     Variables are: {'country': 'ZambiaForTraining'}
     -- Created file in frame: baseline file: campaign.py
     -- Created file in frame: baseline file: config.py
@@ -175,39 +200,65 @@ country model.
 
 3. Execute the following command to see that a new `frames` directory has been created
 
-    ```
-    dir
-    ```
+    === "Windows"
+        ```
+        dir
+        ```
+    === "Linux"
+        ```
+        ls -l
+        ```
 
     You should see something similar to the following:
 
-    ```
-    Directory of C:\work\my_tutorial\my_project
+    === "Windows"
+        ```doscon
+        Directory of C:\work\my_tutorial\my_project
 
-    09/02/2025  09:53 AM    <DIR>          .
-    09/02/2025  09:53 AM    <DIR>          ..
-    09/02/2025  09:53 AM    <DIR>          frames
-    08/08/2025  02:41 PM             1,267 idmtools.ini
-    08/11/2025  09:54 AM             3,542 manifest.py
-    08/11/2025  09:54 AM               355 __init__.py
-    08/11/2025  09:54 AM    <DIR>          __pycache__
-    ```
+        09/02/2025  09:53 AM    <DIR>          .
+        09/02/2025  09:53 AM    <DIR>          ..
+        09/02/2025  09:53 AM    <DIR>          frames
+        08/08/2025  02:41 PM             1,267 idmtools.ini
+        08/11/2025  09:54 AM             3,542 manifest.py
+        08/11/2025  09:54 AM               355 __init__.py
+        08/11/2025  09:54 AM    <DIR>          __pycache__
+        ```
+    === "Linux"
+        ```doscon
+        total 20
+        drwxrwxr-x 3 dbridenbecker dbridenbecker 4096 Sep  4 20:03 frames
+        -rw-rw-r-- 1 dbridenbecker dbridenbecker 1267 Sep  4 19:49 idmtools.ini
+        -rw-rw-r-- 1 dbridenbecker dbridenbecker  355 Sep  4 19:49 __init__.py
+        -rw-rw-r-- 1 dbridenbecker dbridenbecker 3542 Sep  4 19:49 manifest.py
+        drwxrwxr-x 2 dbridenbecker dbridenbecker 4096 Sep  4 19:49 __pycache__
+        ```
 
 4. Execute the following command to see what is in the `frames` directory:
 
-    ```
-    dir frames
-    ```
+    === "Windows"
+        ```
+        dir frames
+        ```
+    === "Linux"
+        ```
+        ls -l frames
+        ```
 
     You should see something similar to the following:
 
-    ```
-    Directory of C:\work\my_tutorial\my_project\frames
+    === "Windows"
+        ```doscon
+        Directory of C:\work\my_tutorial\my_project\frames
 
-    09/02/2025  09:53 AM    <DIR>          .
-    09/02/2025  09:53 AM    <DIR>          ..
-    09/02/2025  09:53 AM    <DIR>          baseline
-    ```
+        09/02/2025  09:53 AM    <DIR>          .
+        09/02/2025  09:53 AM    <DIR>          ..
+        09/02/2025  09:53 AM    <DIR>          baseline
+        ```
+    === "Linux"
+        ```doscon
+        total 4
+        drwxrwxr-x 2 dbridenbecker dbridenbecker 4096 Sep  4 20:03 baseline
+        ```
 
     If you were to execute the `new_frame` command again or the `extend_frame`
     command a new directory will be created in the frames directory with
@@ -215,22 +266,36 @@ country model.
 
 5. Execute the following command to see what is in the `baseline` directory:
 
-    ```
-    dir frames\baseline
-    ```
+    === "Windows"
+        ```
+        dir frames\baseline
+        ```
+    === "Linux"
+        ```
+        ls -l frames/baseline
+        ```
 
     You should see something similar to the following:
 
-    ```
-    Directory of C:\work\my_tutorial\my_project\frames\baseline
+    === "Windows"
+        ```doscon
+        Directory of C:\work\my_tutorial\my_project\frames\baseline
 
-    09/02/2025  09:53 AM    <DIR>          .
-    09/02/2025  09:53 AM    <DIR>          ..
-    09/02/2025  09:53 AM             1,377 campaign.py
-    09/02/2025  09:53 AM             5,446 config.py
-    09/02/2025  09:53 AM             1,408 demographics.py
-    09/02/2025  09:53 AM             1,427 __init__.py
-    ```
+        09/02/2025  09:53 AM    <DIR>          .
+        09/02/2025  09:53 AM    <DIR>          ..
+        09/02/2025  09:53 AM             1,377 campaign.py
+        09/02/2025  09:53 AM             5,446 config.py
+        09/02/2025  09:53 AM             1,408 demographics.py
+        09/02/2025  09:53 AM             1,427 __init__.py
+        ```
+    === "Linux"
+        ```doscon
+        total 20
+        -rw-rw-r-- 1 dbridenbecker dbridenbecker 1350 Sep  4 20:03 campaign.py
+        -rw-rw-r-- 1 dbridenbecker dbridenbecker 5365 Sep  4 20:03 config.py
+        -rw-rw-r-- 1 dbridenbecker dbridenbecker 1381 Sep  4 20:03 demographics.py
+        -rw-rw-r-- 1 dbridenbecker dbridenbecker 1398 Sep  4 20:03 __init__.py
+        ```
 
     The `campaign.py`, `config.py`, and `demographics.py` files give you hooks
     into how these different elements of an EMOD simulation are configured.
