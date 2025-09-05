@@ -11,14 +11,11 @@ The following tutorials assume you are familiar with the following:
 If you have been using EMOD-HIV with DtkTools, this [comparison](../reference/dtktools_comparison.md)
 page will help you to understand what is different from how you have been using EMOD-HIV.
 
-## Installation
+## Setup and Installation
 
-If you are doing the tutorials on your own computer or cluster, go to the
-[installation guide](../installation.md) for creating a virtual environment
-and installing emodpy-workflow in it.
-
-If you are using the **GitHub Codespaces** with the emodpy-workflow repository,
-everything should already be installed.
+You can do the tutorials locally or using GitHub Codespaces.  The
+[Setup and Installation](setup.md) instructions will get you prepared to
+do the following tutorials.
 
 ## Create a project
 

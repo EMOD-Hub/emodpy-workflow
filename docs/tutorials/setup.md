@@ -15,7 +15,7 @@ more than you want to do, consider using GitHub Codespaces
 skip installation.  Once you decide you want to do more with EMOD,
 you can come back and install EMOD locally.
 
-## Setup locally
+## Set up locally
 
 1. Install any prerequisites according to the [installation](../installation.md#software-prerequisites) instructions.
 
@@ -30,7 +30,8 @@ you can come back and install EMOD locally.
     cd my_tutorial
     ```
 
-3. Go back to the [installation](../installation.md#setup-virtual-environment).  Setup the virtual environment and install **emodpy-workflow**.
+3. Go back to the [installation](../installation.md#setup-virtual-environment).
+Set up the virtual environment and install **emodpy-workflow**.
 
 4. Verify that you are in the correct directory using the command below:
 
@@ -57,7 +58,7 @@ you can come back and install EMOD locally.
 
     You should be ready to start the tutorial.
 
-## Setup codespaces
+## Set up codespaces
 
 !!! Costs
     Your personal GitHub account comes with 120 core hours of FREE usage.  Unless
