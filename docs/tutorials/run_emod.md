@@ -124,46 +124,72 @@ To run EMOD, we will use the emodpy-workflow `run` command.
 
     You should see output similar to the following:
 
-    ```doscon
-    INI File Found: C:\work\emodpy-training\idmtools.ini
-    ```
+    === "Windows"
+        ```doscon
+        INI File Found: C:\work\emodpy-training\idmtools.ini
 
-    ```doscon
-    Initializing ContainerPlatform with:
-    {
-    "job_directory": "emodpy-jobs"
-    }
-    Creating Suites: 100%|████████████████████████████████████████████████████████████████████████| 1/1 [00:00<?, ?suite/s]
-    Creating Experiments:   0%|                                                              | 0/1 [00:00<?, ?experiment/s]>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-    Total parameter access counts:
-    {}
-    <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-    Creating Experiments: 100%|██████████████████████████████████████████████████████| 1/1 [00:06<00:00,  6.50s/experiment]
-    Initializing objects for creation: 0simulation [00:00, ?simulation/s]>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-    Total parameter access counts:
-    {}
-    <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-    Commissioning Simulations: 100%|█████████████████████████████████████████████████| 1/1 [00:00<00:00, 17.86simulation/s]
-    job_directory: C:\work\emodpy-training\emodpy-jobs
-    suite: 2cf29edc-6b4d-459b-9542-3eae5c59a151
-    experiment: 8ae683e4-8af6-4cd9-b8a3-5c63a5a10a17
-    ```
+        Initializing ContainerPlatform with:
+        {
+        "job_directory": "emodpy-jobs"
+        }
+        Creating Suites: 100%|████████████████████████████████████████████████████████████████████████| 1/1 [00:00<?, ?suite/s]
+        Creating Experiments:   0%|                                                              | 0/1 [00:00<?, ?experiment/s]>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+        Total parameter access counts:
+        {}
+        <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+        Creating Experiments: 100%|██████████████████████████████████████████████████████| 1/1 [00:06<00:00,  6.50s/experiment]
+        Initializing objects for creation: 0simulation [00:00, ?simulation/s]>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+        Total parameter access counts:
+        {}
+        <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+        Commissioning Simulations: 100%|█████████████████████████████████████████████████| 1/1 [00:00<00:00, 17.86simulation/s]
+        job_directory: C:\work\emodpy-training\emodpy-jobs
+        suite: 2cf29edc-6b4d-459b-9542-3eae5c59a151
+        experiment: 8ae683e4-8af6-4cd9-b8a3-5c63a5a10a17
 
-    ```doscon
-    Experiment Directory:
-    C:\work\emodpy-training\emodpy-jobs\my_first_suite_2cf29edc-6b4d-459b-9542-3eae5c59a151\my_first_suite_8ae683e4-8af6-4cd9-b8a3-5c63a5a10a17
-    ```
+        Experiment Directory:
+        C:\work\emodpy-training\emodpy-jobs\my_first_suite_2cf29edc-6b4d-459b-9542-3eae5c59a151\my_first_suite_8ae683e4-8af6-4cd9-b8a3-5c63a5a10a17
 
-    ```doscon
-    Container ID: c3a6a8de63be
-    ```
+        Container ID: c3a6a8de63be
 
-    ```doscon
-    You may try the following command to check simulations running status:
-    idmtools container status 8ae683e4-8af6-4cd9-b8a3-5c63a5a10a17
-    Wrote run.py receipt to: results/my_first_run\experiment_index.csv
-    Done with model experiment creation.
-    ```
+        You may try the following command to check simulations running status:
+        idmtools container status 8ae683e4-8af6-4cd9-b8a3-5c63a5a10a17
+        Wrote run.py receipt to: results/my_first_run\experiment_index.csv
+        Done with model experiment creation.
+        ```
+    === "Linux"
+        ```doscon
+        INI File Found: /home/internal.idm.ctr/dbridenbecker/emodpy/my_tutorial/my_project/idmtools.ini
+
+        Initializing ContainerPlatform with:
+        {
+        "job_directory": "emodpy-jobs"
+        }
+        Creating Suites: 100%|███████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 1602.10suite/s]
+        Creating Experiments:   0%|                                                                                   | 0/1 [00:00<?, ?experiment/s]>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+        Total parameter access counts:
+        {}
+        <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+        Creating Experiments: 100%|███████████████████████████████████████████████████████████████████████████| 1/1 [00:05<00:00,  5.15s/experiment]
+        Initializing objects for creation: 0simulation [00:00, ?simulation/s]>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+        Total parameter access counts:
+        {}
+        <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+        Commissioning Simulations: 100%|██████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 67.47simulation/s]
+        job_directory: /home/internal.idm.ctr/dbridenbecker/emodpy/my_tutorial/my_project/emodpy-jobs
+        suite: 38dbabe0-e7f7-49ee-a8f3-983f3657b01d
+        experiment: 07c1fa36-2f8b-41f0-a7fe-1afdf5e6233a
+
+        Experiment Directory: 
+        /home/internal.idm.ctr/dbridenbecker/emodpy/my_tutorial/my_project/emodpy-jobs/my_first_suite_38dbabe0-e7f7-49ee-a8f3-983f3657b01d/my_first_suite_07c1fa36-2f8b-41f0-a7fe-1afdf5e6233a
+
+        Container ID: c4d227306f49
+
+        You may try the following command to check simulations running status: 
+        idmtools container status 07c1fa36-2f8b-41f0-a7fe-1afdf5e6233a
+        Wrote run.py receipt to: results/my_first_run/experiment_index.csv
+        Done with model experiment creation.
+        ```
 
     !!! Note
         This means that the simulations have been submitted to start running.
@@ -174,34 +200,49 @@ To run EMOD, we will use the emodpy-workflow `run` command.
 Notice how in the last four lines of the output that there is information about finding
 the status of your output.  In this case, the following line
 
-```doscon
-idmtools container status 8ae683e4-8af6-4cd9-b8a3-5c63a5a10a17
-```
+=== "Windows"
+    ```doscon
+    idmtools container status 8ae683e4-8af6-4cd9-b8a3-5c63a5a10a17
+    ```
+=== "Linux"
+    ```doscon
+    idmtools container status 07c1fa36-2f8b-41f0-a7fe-1afdf5e6233a
+    ```
 
-says get status on experiment "8ae683e4-8af6-4cd9-b8a3-5c63a5a10a17".
+says get status on experiment with the given ID.
 
 If you execute that line, you should see something similar to:
 
-```
-INI File Found: C:\work\emodpy-training\idmtools.ini
-```
+=== "Windows"
+    ```doscon
+    INI File Found: C:\work\emodpy-training\idmtools.ini
 
-```doscon
-Experiment Directory:
-c:/work/emodpy-training/emodpy-jobs/my_first_suite_2cf29edc-6b4d-459b-9542-3eae5c59a151/my_first_suite_8ae683e4-8af6-4cd
-9-b8a3-5c63a5a10a17
-```
+    Experiment Directory:
+    c:/work/emodpy-training/emodpy-jobs/my_first_suite_2cf29edc-6b4d-459b-9542-3eae5c59a151/my_first_suite_8ae683e4-8af6-4cd
+    9-b8a3-5c63a5a10a17
 
-```doscon
-Simulation Count: 1
-```
+    Simulation Count: 1
 
-```doscon
-SUCCEEDED (1)
-FAILED (0)
-RUNNING (0)
-PENDING (0)
-```
+    SUCCEEDED (1)
+    FAILED (0)
+    RUNNING (0)
+    PENDING (0)
+    ```
+=== "Linux"
+    ```doscon
+    INI File Found: /home/internal.idm.ctr/dbridenbecker/emodpy/my_tutorial/my_project/idmtools.ini
+
+    Experiment Directory: 
+    /home/internal.idm.ctr/dbridenbecker/emodpy/my_tutorial/my_project/emodpy-jobs/my_first_suite_38dbabe0-e7f7-49ee-a8f3-983f3657b01d/my_first_
+    suite_07c1fa36-2f8b-41f0-a7fe-1afdf5e6233a
+
+    Simulation Count: 1
+
+    SUCCEEDED (1)
+    FAILED (0)
+    RUNNING (0)
+    PENDING (0)
+    ```
 
 !!! Note
     This only works when using the Container Platform.  To see status
@@ -227,18 +268,24 @@ associated with running the experiment and simulations.  Let's go investigate.
     === "Linux"
         ```bash
         cd emodpy-jobs
-        ls
+        ls -l
         ```
 
     You should see something similar to:
 
-    ```doscon
-    Directory of C:\work\my_training\my_project\emodpy-jobs
+    === "Windows"
+        ```doscon
+        Directory of C:\work\my_training\my_project\emodpy-jobs
 
-    09/02/2025  01:30 PM    <DIR>          .
-    09/02/2025  01:30 PM    <DIR>          ..
-    09/02/2025  01:30 PM    <DIR>          my_first_suite_2f7f3943-0814-418a-9792-604fc7db2a31
-    ```
+        09/02/2025  01:30 PM    <DIR>          .
+        09/02/2025  01:30 PM    <DIR>          ..
+        09/02/2025  01:30 PM    <DIR>          my_first_suite_2f7f3943-0814-418a-9792-604fc7db2a31
+        ```
+    === "Linux"
+        ```doscon
+        total 4
+        drwxrwxr-x 3 dbridenbecker dbridenbecker 4096 Sep  5 12:32 my_first_suite_38dbabe0-e7f7-49ee-a8f3-983f3657b01d
+        ```
 
     Notice the directory `my_first_suite_2f7f3943-0814-418a-9792-604fc7db2a31` starts
     with the name we gave the suite.
@@ -253,25 +300,32 @@ following (your directory name is likely different):
         ```
     === "Linux"
         ```bash
-        cd my_first_suite_2f7f3943-0814-418a-9792-604fc7db2a31
-        ls
+        cd my_first_suite_38dbabe0-e7f7-49ee-a8f3-983f3657b01d
+        ls -l
         ```
 
     You should see something similar to the following:
 
-    ```doscon
-    Directory of C:\work\my_training\my_project\emodpy-jobs\my_first_suite_2f7f3943-0814-418a-9792-604fc7db2a31
+    === "Windows"
+        ```doscon
+        Directory of C:\work\my_training\my_project\emodpy-jobs\my_first_suite_2f7f3943-0814-418a-9792-604fc7db2a31
 
-    09/02/2025  01:30 PM    <DIR>          .
-    09/02/2025  01:30 PM    <DIR>          ..
-    09/02/2025  01:30 PM               484 metadata.json
-    09/02/2025  01:30 PM    <DIR>          my_first_suite_857c15be-a4b9-4d46-86f5-d0c0f9a2fbe5
-    ```
+        09/02/2025  01:30 PM    <DIR>          .
+        09/02/2025  01:30 PM    <DIR>          ..
+        09/02/2025  01:30 PM               484 metadata.json
+        09/02/2025  01:30 PM    <DIR>          my_first_suite_857c15be-a4b9-4d46-86f5-d0c0f9a2fbe5
+        ```
+    === "Linux"
+        ```
+        total 8
+        -rw-rw-r-- 1 dbridenbecker dbridenbecker  515 Sep  5 12:32 metadata.json
+        drwxrwxr-x 4 dbridenbecker dbridenbecker 4096 Sep  5 12:32 my_first_suite_07c1fa36-2f8b-41f0-a7fe-1afdf5e6233a
+        ```
 
     Yes, it looks very similar, but this is the experiment directory.
 
-3. Look in the **experiment directory** `my_first_suite_857c15be-a4b9-4d46-86f5-d0c0f9a2fbe5`
-
+3. Look in the **experiment directory** by executing commands similar to the
+following (your directory name is likely different):
     === "Windows"
         ```doscon
         cd my_first_suite_857c15be-a4b9-4d46-86f5-d0c0f9a2fbe5
@@ -279,31 +333,49 @@ following (your directory name is likely different):
         ```
     === "Linux"
         ```bash
-        cd my_first_suite_857c15be-a4b9-4d46-86f5-d0c0f9a2fbe5
-        ls
+        cd my_first_suite_07c1fa36-2f8b-41f0-a7fe-1afdf5e6233a
+        ls -l
         ```
 
     You should see something similar to the following:
 
-    ```doscon
-    Directory of C:\work\my_training\my_project\emodpy-jobs\my_first_suite_2f7f3943-0814-418a-9792-604fc7db2a31\my_first_suite_857c15be-a4b9-4d46-86f5-d0c0f9a2fbe5
+    === "Windows"
+        ```doscon
+        Directory of C:\work\my_training\my_project\emodpy-jobs\my_first_suite_2f7f3943-0814-418a-9792-604fc7db2a31\my_first_suite_857c15be-a4b9-4d46-86f5-d0c0f9a2fbe5
 
-    09/02/2025  01:30 PM    <DIR>          .
-    09/02/2025  01:30 PM    <DIR>          ..
-    09/02/2025  01:30 PM    <DIR>          84efd93c-b13a-4bd4-ae54-f4ac5ab7aa9d
-    09/02/2025  01:30 PM    <DIR>          Assets
-    09/02/2025  01:30 PM               229 batch.sh
-    09/02/2025  01:30 PM             1,006 metadata.json
-    09/02/2025  01:30 PM               179 run_simulation.sh
-    09/02/2025  01:30 PM                 0 stderr.txt
-    09/02/2025  01:30 PM               181 stdout.txt
-    ```
+        09/02/2025  01:30 PM    <DIR>          .
+        09/02/2025  01:30 PM    <DIR>          ..
+        09/02/2025  01:30 PM    <DIR>          84efd93c-b13a-4bd4-ae54-f4ac5ab7aa9d
+        09/02/2025  01:30 PM    <DIR>          Assets
+        09/02/2025  01:30 PM               229 batch.sh
+        09/02/2025  01:30 PM             1,006 metadata.json
+        09/02/2025  01:30 PM               179 run_simulation.sh
+        09/02/2025  01:30 PM                 0 stderr.txt
+        09/02/2025  01:30 PM               181 stdout.txt
+        ```
+    === "Linux"
+        ```doscon
+        total 24
+        drwxrwxr-x 3 dbridenbecker dbridenbecker 4096 Sep  5 12:32 45eefc10-bf1d-48bf-a7f0-d90d1c94bd8f
+        drwxrwxr-x 2 dbridenbecker dbridenbecker 4096 Sep  5 12:32 Assets
+        -rwxrwxrwx 1 dbridenbecker dbridenbecker  229 Sep  5 12:32 batch.sh
+        -rw-rw-r-- 1 dbridenbecker dbridenbecker 1067 Sep  5 12:32 metadata.json
+        -rwxrwxrwx 1 dbridenbecker dbridenbecker  179 Sep  5 12:32 run_simulation.sh
+        -rw-r--r-- 1 root          root             0 Sep  5 12:32 stderr.txt
+        -rw-r--r-- 1 root          root           181 Sep  5 12:32 stdout.txt
+        ```
 
     The **experiment** directory will have one folder for each simulation of the
-    experiment.  In this case, there is only one simulation with ID
-    `84efd93c-b13a-4bd4-ae54-f4ac5ab7aa9d`.  For the most part, you do not need
-    to know about the other files in the directory.  However, the `metadata.json`
-    file does contain some details about the experiment and its simulations.
+    experiment.  In this case, there is only one simulation with ID:
+
+    === "Windows"
+        `84efd93c-b13a-4bd4-ae54-f4ac5ab7aa9d`
+    === "Linux"
+        `45eefc10-bf1d-48bf-a7f0-d90d1c94bd8f`
+    
+    For the most part, you do not need to know about the other files in the directory.
+    However, the `metadata.json` file does contain some details about the experiment
+    and its simulations.
 
 4. Look in the **simulation directory** `84efd93c-b13a-4bd4-ae54-f4ac5ab7aa9d`
 
@@ -314,29 +386,45 @@ following (your directory name is likely different):
         ```
     === "Linux"
         ```bash
-        cd 84efd93c-b13a-4bd4-ae54-f4ac5ab7aa9d
-        ls
+        cd 45eefc10-bf1d-48bf-a7f0-d90d1c94bd8f
+        ls -l
         ```
 
     You should see something similar to the following:
 
-    ```doscon
-    Directory of C:\work\my_training\my_project\emodpy-jobs\my_first_suite_2f7f3943-0814-418a-9792-604fc7db2a31\my_first_suite_857c15be-a4b9-4d46-86f5-d0c0f9a2fbe5\84efd93c-b13a-4bd4-ae54-f4ac5ab7aa9d
+    === "Windows"
+        ```doscon
+        Directory of C:\work\my_training\my_project\emodpy-jobs\my_first_suite_2f7f3943-0814-418a-9792-604fc7db2a31\my_first_suite_857c15be-a4b9-4d46-86f5-d0c0f9a2fbe5\84efd93c-b13a-4bd4-ae54-f4ac5ab7aa9d
 
-    09/02/2025  01:30 PM    <DIR>          .
-    09/02/2025  01:30 PM    <DIR>          ..
-    09/02/2025  01:30 PM    <SYMLINKD>     Assets [..\Assets]
-    09/02/2025  01:30 PM           206,144 campaign.json
-    09/02/2025  01:30 PM             7,226 config.json
-    09/02/2025  01:32 PM                 2 job_status.txt
-    09/02/2025  01:30 PM             9,310 metadata.json
-    09/02/2025  01:32 PM    <DIR>          output
-    09/02/2025  01:32 PM            30,139 status.txt
-    09/02/2025  01:30 PM                 0 stderr.txt
-    09/02/2025  01:32 PM           120,255 stdout.txt
-    09/02/2025  01:30 PM           330,404 tmpncr6smi4.json
-    09/02/2025  01:30 PM               762 _run.sh
-    ```
+        09/02/2025  01:30 PM    <DIR>          .
+        09/02/2025  01:30 PM    <DIR>          ..
+        09/02/2025  01:30 PM    <SYMLINKD>     Assets [..\Assets]
+        09/02/2025  01:30 PM           206,144 campaign.json
+        09/02/2025  01:30 PM             7,226 config.json
+        09/02/2025  01:32 PM                 2 job_status.txt
+        09/02/2025  01:30 PM             9,310 metadata.json
+        09/02/2025  01:32 PM    <DIR>          output
+        09/02/2025  01:32 PM            30,139 status.txt
+        09/02/2025  01:30 PM                 0 stderr.txt
+        09/02/2025  01:32 PM           120,255 stdout.txt
+        09/02/2025  01:30 PM           330,404 tmpncr6smi4.json
+        09/02/2025  01:30 PM               762 _run.sh
+        ```
+    === "Linux"
+        ```doscon
+        total 704
+        lrwxrwxrwx 1 dbridenbecker dbridenbecker      9 Sep  5 12:32 Assets -> ../Assets
+        -rw-rw-r-- 1 dbridenbecker dbridenbecker 206144 Sep  5 12:32 campaign.json
+        -rw-rw-r-- 1 dbridenbecker dbridenbecker   7257 Sep  5 12:32 config.json
+        -rw-r--r-- 1 root          root               2 Sep  5 12:34 job_status.txt
+        -rw-rw-r-- 1 dbridenbecker dbridenbecker   9393 Sep  5 12:32 metadata.json
+        drwxr-xr-x 2 root          root            4096 Sep  5 12:34 output
+        -rwxrwxrwx 1 dbridenbecker dbridenbecker    762 Sep  5 12:32 _run.sh
+        -rw-r--r-- 1 root          root           30139 Sep  5 12:34 status.txt
+        -rw-r--r-- 1 root          root               0 Sep  5 12:32 stderr.txt
+        -rw-r--r-- 1 root          root          120255 Sep  5 12:34 stdout.txt
+        -rw-rw-r-- 1 dbridenbecker dbridenbecker 320723 Sep  5 12:32 tmpu8tbs9qp.json
+        ```
 
     The **simulation directory** is the directory where a single realization/simulation
     of EMOD is being run.  If you have simulations that are failing or not running to
@@ -376,26 +464,35 @@ following (your directory name is likely different):
 
 6. Go back to the project directory - `my_project`
 
-    ```
-    cd ..
-    cd ..
-    cd ..
-    cd ..
-    ```
+    === "Windows"
+        ```
+        cd ..
+        cd ..
+        cd ..
+        cd ..
+        cd
+        ```
+    === "Linux"
+        ```
+        cd ..
+        cd ..
+        cd ..
+        cd ..
+        pwd
+        ```
 
     You should see something similar to:
 
-    ```doscon
-    (env) C:\work\my_training\my_project\emodpy-jobs\my_first_suite_2f7f3943-0814-418a-9792-604fc7db2a31\my_first_suite_857c15be-a4b9-4d46-86f5-d0c0f9a2fbe5\84efd93c-b13a-4bd4-ae54-f4ac5ab7aa9d>cd ..
+    === "Windows"
+        ```doscon
+        C:\work\my_training\my_project>
+        ```
+    === "Linux"
+        ```doscon
+        /home/internal.idm.ctr/dbridenbecker/emodpy/my_tutorial/my_project
+        ```
 
-    (env) C:\work\my_training\my_project\emodpy-jobs\my_first_suite_2f7f3943-0814-418a-9792-604fc7db2a31\my_first_suite_857c15be-a4b9-4d46-86f5-d0c0f9a2fbe5>cd ..
-
-    (env) C:\work\my_training\my_project\emodpy-jobs\my_first_suite_2f7f3943-0814-418a-9792-604fc7db2a31>cd ..
-
-    (env) C:\work\my_training\my_project\emodpy-jobs>cd ..
-
-    (env) C:\work\my_training\my_project>
-    ```
+    You should be back to your [project directory](../reference/projects.md).
 
 ## View the `results/my_first_run` folder and the "receipt file"
 
@@ -403,32 +500,54 @@ In our `run` command, you specified the output as `-o results/my_first_run`.
 
 1. Look at the contents of the `results/my_first_run` folder
 
-    ```
-    dir results/my_first_run
-    ```
+    === "Windows"
+        ```doscon
+        dir results\my_first_run
+        ```
+    === "Linux"
+        ```bash
+        ls -l results/my_first_run
+        ```
 
     You should see something similar to the following:
 
-    ```doscon
-    Directory of C:\work\my_training\my_project\results\my_first_run
+    === "Windows"
+        ```doscon
+        Directory of C:\work\my_training\my_project\results\my_first_run
 
-    09/02/2025  02:52 PM    <DIR>          .
-    09/02/2025  02:52 PM    <DIR>          ..
-    09/02/2025  01:30 PM               275 experiment_index.csv
-    ```
+        09/02/2025  02:52 PM    <DIR>          .
+        09/02/2025  02:52 PM    <DIR>          ..
+        09/02/2025  01:30 PM               275 experiment_index.csv
+        ```
+    === "Linux"
+        ```doscon
+        total 4
+        -rw-rw-r-- 1 dbridenbecker dbridenbecker 309 Sep  5 12:32 experiment_index.csv
+        ```
 
 2. Look at the contents of the `results/my_first_run/experiment_index.csv`
 
-    ```doscon
-    type results\my_first_run\experiment_index.csv
-    ```
+    === "Windows"
+        ```doscon
+        type results\my_first_run\experiment_index.csv
+        ```
+    === "Linux"
+        ```doscon
+        cat results/my_first_run/experiment_index.csv
+        ```
 
     You should see something similar to the following:
 
-    ```doscon
-    index,frame,experiment_id,experiment_name,experiment_directory
-    0,baseline,857c15be-a4b9-4d46-86f5-d0c0f9a2fbe5,my_first_suite,C:\work\my_training\my_project\emodpy-jobs\my_first_suite_2f7f3943-0814-418a-9792-604fc7db2a31\my_first_suite_857c15be-a4b9-4d46-86f5-d0c0f9a2fbe5
-    ```
+    === "Windows"
+        ```doscon
+        index,frame,experiment_id,experiment_name,experiment_directory
+        0,baseline,857c15be-a4b9-4d46-86f5-d0c0f9a2fbe5,my_first_suite,C:\work\my_training\my_project\emodpy-jobs\my_first_suite_2f7f3943-0814-418a-9792-604fc7db2a31\my_first_suite_857c15be-a4b9-4d46-86f5-d0c0f9a2fbe5
+        ```
+    === "Linux"
+        ```doscon
+        index,frame,experiment_id,experiment_name,experiment_directory
+        0,baseline,07c1fa36-2f8b-41f0-a7fe-1afdf5e6233a,my_first_suite,/home/internal.idm.ctr/dbridenbecker/emodpy/my_tutorial/my_project/emodpy-jobs/my_first_suite_38dbabe0-e7f7-49ee-a8f3-983f3657b01d/my_first_suite_07c1fa36-2f8b-41f0-a7fe-1afdf5e6233a
+        ```
 
     This file can provide you information about the experiment and where the files
     are located.  We will use it in our next step to download the report data.
@@ -495,63 +614,112 @@ let's get back to our project directory and get our report data.
     - `-p ContainerPlatform` - This tells the `download` command to use the
     Container protocol when getting data.
 
+    You should see something similar to the following:
+
+    ```doscon
+    INI File Found: /home/internal.idm.ctr/dbridenbecker/emodpy/my_tutorial/my_project/idmtools.ini
+
+    Initializing ContainerPlatform with:
+    {
+    "job_directory": "emodpy-jobs"
+    }
+    Waiting on Experiment my_first_suite to Finish running: 100%|█████████████████████████████████████| 1/1 [00:00<00:00, 2343.19simulation/s]
+    100%|███████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 25.25it/s]
+    Running Analyzer Reduces: 100%|████████████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 465.67it/s]
+    Done downloading files to: /home/internal.idm.ctr/dbridenbecker/emodpy/my_tutorial/my_project/results/my_first_run
+    ```
+
     As you can tell, there are many ways to specify the download of the data.
     The [how-tos](../how_to/how_to_download_data.md) can show you different
     ways to do it.
 
 4. See that a new folder was added to the `results/my_first_run:
 
-    ```
-    dir results\my_first_run
-    ```
+    === "Windows"
+        ```doscon
+        dir results\my_first_run
+        ```
+    === "Linux"
+        ```
+        ls -l results/my_first_run
+        ```
 
     Now when we look in this folder we should see something similar to the following:
 
-    ```doscon
-    Directory of C:\work\my_training\my_project\results\my_first_run
+    === "Windows"
+        ```doscon
+        Directory of C:\work\my_training\my_project\results\my_first_run
 
-    09/02/2025  02:52 PM    <DIR>          .
-    09/02/2025  02:52 PM    <DIR>          ..
-    09/02/2025  01:30 PM               275 experiment_index.csv
-    09/02/2025  02:52 PM    <DIR>          my_first_suite--0
-    ```
+        09/02/2025  02:52 PM    <DIR>          .
+        09/02/2025  02:52 PM    <DIR>          ..
+        09/02/2025  01:30 PM               275 experiment_index.csv
+        09/02/2025  02:52 PM    <DIR>          my_first_suite--0
+        ```
+    === "Linux"
+        ```doscon
+        total 8
+        -rw-rw-r-- 1 dbridenbecker dbridenbecker  309 Sep  5 12:32 experiment_index.csv
+        drwxrwxr-x 3 dbridenbecker dbridenbecker 4096 Sep  5 15:00 my_first_suite--0
+        ```
 
     The `my_first_suite--0` directory was created.
 
 5. See that a folder was created with the name of the report:
 
-    ```
-    dir results\my_first_run\my_first_suite--0
-    ```
+    === "Windows"
+        ```doscon
+        dir results\my_first_run\my_first_suite--0
+        ```
+    === "Linux"
+        ```
+        ls -l results/my_first_run/my_first_suite--0
+        ```
 
     You should see something similar to the following:
 
-    ```doscon
-    Directory of C:\work\my_training\my_project\results\my_first_run\my_first_suite--0
+    === "Windows"
+        ```doscon
+        Directory of C:\work\my_training\my_project\results\my_first_run\my_first_suite--0
 
-    09/02/2025  02:52 PM    <DIR>          .
-    09/02/2025  02:52 PM    <DIR>          ..
-    09/02/2025  02:52 PM    <DIR>          InsetChart
-    ```
+        09/02/2025  02:52 PM    <DIR>          .
+        09/02/2025  02:52 PM    <DIR>          ..
+        09/02/2025  02:52 PM    <DIR>          InsetChart
+        ```
+    === "Linux"
+        ```doscon
+        total 4
+        drwxrwxr-x 2 dbridenbecker dbridenbecker 4096 Sep  5 15:00 InsetChart
+        ```
 
     Notice that `InsetChart` is the base name of the report file we requested
     to download.
 
 6. See where the data has been put by executing the following command:
 
-    ```
-    dir results\my_first_run\my_first_suite--0\InsetChart
-    ```
+    === "Windows"
+        ```doscon
+        dir results\my_first_run\my_first_suite--0\InsetChart
+        ```
+    === "Linux"
+        ```bash
+        ls -l results/my_first_run/my_first_suite--0/InsetChart
+        ```
 
     You should see something similar to the following:
 
-    ```doscon
-    Directory of C:\work\my_training\my_project\results\my_first_run\my_first_suite--0\InsetChart
+    === "Windows"
+        ```doscon
+        Directory of C:\work\my_training\my_project\results\my_first_run\my_first_suite--0\InsetChart
 
-    09/02/2025  02:52 PM    <DIR>          .
-    09/02/2025  02:52 PM    <DIR>          ..
-    09/02/2025  02:52 PM           300,997 InsetChart_sample00000_run00001.json
-    ```
+        09/02/2025  02:52 PM    <DIR>          .
+        09/02/2025  02:52 PM    <DIR>          ..
+        09/02/2025  02:52 PM           300,997 InsetChart_sample00000_run00001.json
+        ```
+    === "Linux"
+        ```doscon
+        total 296
+        -rw-rw-r-- 1 dbridenbecker dbridenbecker 300997 Sep  5 15:00 InsetChart_sample00000_run00001.json
+        ```
 
     The directory should contain one file for each simulation of the experiment.
     In this case, there is only one.
@@ -598,9 +766,14 @@ in the simulation.
 
 2. Execute the following command to plot the data in InsetChart.json:
 
-    ```doscon
-    python -m emodpy_hiv.plotting.plot_inset_chart -d results\my_first_run\my_first_suite--0\InsetChart
-    ```
+    === "Windows"
+        ```doscon
+        python -m emodpy_hiv.plotting.plot_inset_chart -d results\my_first_run\my_first_suite--0\InsetChart
+        ```
+    === "Linux"
+        ```doscon
+        python -m emodpy_hiv.plotting.plot_inset_chart -d results/my_first_run/my_first_suite--0/InsetChart
+        ```
 
     This should produce an image or window that looks like the following:
 
