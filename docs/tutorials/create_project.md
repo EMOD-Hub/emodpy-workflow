@@ -2,7 +2,7 @@
 
 ## Objective
 
-The goal of this tutorial is to learn about "projects" and "frames".  All the commands
+The goal of this tutorial is to learn about "projects" and "frames."  All the commands
 of emodpy-workflow must be used within a "project".  You will learn how to create a
 new project and the files that exist in a project.  Most of the other commands require
 a "frame".  A frame is an idea/scenario that involves changing parameters and/or code.
@@ -10,24 +10,8 @@ You will learn how to create a frame in this tutorial.
 
 ## Prerequisites
 
-python 3.9
-
-## Setup and Installation
-
-1. Create directory for your training
-
-```
-mkdir my_training
-cd my_training
-```
-
-2. Follow the installation instructions if not using Codespaces
-
-Use the [installation](../installation.md) instructions to setup your virtual
-environment and install emodpy-workflow.
-
-If you are using Codespaces with the emodpy-workflow repository, you do not
-need to create a virtual environment or install emodpy-workflow.
+You must complete the [setup and installation instructions](setup.md) before you can
+start this tutorial.
 
 ## General command format
 
@@ -40,7 +24,7 @@ directory of your project and type the command similarly to the following:
 python -m emodpy_workflow.scripts.XXX <arguments>
 ```
 
-Test that you can execute a command
+Test that you can execute a command:
 
 ```
 python -m emodpy_workflow.scripts.new_project -h
@@ -65,7 +49,7 @@ The 'new_project' command is use to create a
 [new project directory](../reference/projects.md).  It is assumed that all
 of the other commands will be executed in this project directory.
 
-Execute new_project command
+Execute new_project command:
 
 ```
 python -m emodpy_workflow.scripts.new_project -d my_project
@@ -91,7 +75,7 @@ Let's look into the directory that was just created and learn about what is in i
 
     ```
 
-    Directory of C:\work\my_training
+    Directory of C:\work\my_tutorial
 
     08/12/2025  09:28 AM    <DIR>          .
     08/12/2025  09:28 AM    <DIR>          ..
@@ -99,8 +83,8 @@ Let's look into the directory that was just created and learn about what is in i
     08/11/2025  09:54 AM    <DIR>          my_project
     ```
 
-    - `env` - This folder is the one that contains our python virtual environment.
-    It contains all of the python tools we need for running EMOD, plotting data, etc.
+    - `env` - This folder is the one that contains our Python virtual environment.
+    It contains all of the Python tools we need for running EMOD, plotting data, etc.
     - `my_project` - This is the folder we just created with the **new_project**
     command.  All future emodpy-workflow commands must be executed inside the
     `my_project` folder.
@@ -115,7 +99,7 @@ Let's look into the directory that was just created and learn about what is in i
     You should see something similar to the following:
 
     ```
-    Directory of C:\work\my_training\my_project
+    Directory of C:\work\my_tutorial\my_project
 
     08/12/2025  10:37 AM    <DIR>          .
     08/12/2025  10:37 AM    <DIR>          ..
@@ -127,11 +111,11 @@ Let's look into the directory that was just created and learn about what is in i
 
     - `idmtools.ini` - This file contains information about the computing platforms
     where you are running EMOD like where you want the simulation files to be created.
-    The [reference](../reference/projects#idmtoolsini) contains the
+    The [reference](../reference/projects.md#idmtoolsini) contains the
     details about this file.
     - `manifest.py` - This file contains information about how you are running EMOD,
     like where the EMOD binary is stored and if you are using simulation post processing.
-    The [reference](../reference/projects#manifestpy) contains the
+    The [reference](../reference/projects.md#manifestpy) contains the
     details about this file.
     - `__init__.py` - A normal Python file that defines the folder as a Python package.
     - `__pycache__` - This folder is created by Python to store compiled bytecode files for
@@ -145,11 +129,11 @@ HIV on their 15th birthday.  See the [reference](../reference/frames.md)
 for more information.
 
 Before you start creating new scenarios, you will want to create the frame that you will
-consider as your "baseline".  This is a scenario too, but it will be the scenario that
-you will compare everything too.  Typically, you setup the baseline to be the standard
+consider as your "baseline."  This is a scenario too, but it will be the scenario that
+you will compare everything to.  Typically, you setup the baseline to be the standard
 country model.
 
-1. Execute the following to see the options of the 'new_frame' command
+1. Execute the following to see the options of the 'new_frame' command:
 
     ```
     python -m emodpy_workflow.scripts.new_frame -h
@@ -158,7 +142,7 @@ country model.
     You should see something similar to the following:
 
     ```
-    (env) C:\work\my_training\my_project>python -m emodpy_workflow.scripts.new_frame -h
+    (env) C:\work\my_tutorial\my_project>python -m emodpy_workflow.scripts.new_frame -h
     usage: new_frame.py [-h] --country COUNTRY_MODEL --dest DEST_FRAME
 
     optional arguments:
@@ -180,7 +164,7 @@ country model.
     When the command is finished, you should see output similar to the following:
 
     ```
-    (env) C:\work\my_training\my_project>python -m emodpy_workflow.scripts.new_frame --country ZambiaForTraining --dest baseline
+    (env) C:\work\my_tutorial\my_project>python -m emodpy_workflow.scripts.new_frame --country ZambiaForTraining --dest baseline
     Variables are: {'country': 'ZambiaForTraining'}
     -- Created file in frame: baseline file: campaign.py
     -- Created file in frame: baseline file: config.py
@@ -198,7 +182,7 @@ country model.
     You should see something similar to the following:
 
     ```
-    Directory of C:\work\my_training\my_project
+    Directory of C:\work\my_tutorial\my_project
 
     09/02/2025  09:53 AM    <DIR>          .
     09/02/2025  09:53 AM    <DIR>          ..
@@ -209,7 +193,7 @@ country model.
     08/11/2025  09:54 AM    <DIR>          __pycache__
     ```
 
-4. Execute the following command to see what is IN the `frames` directory:
+4. Execute the following command to see what is in the `frames` directory:
 
     ```
     dir frames
@@ -218,7 +202,7 @@ country model.
     You should see something similar to the following:
 
     ```
-    Directory of C:\work\my_training\my_project\frames
+    Directory of C:\work\my_tutorial\my_project\frames
 
     09/02/2025  09:53 AM    <DIR>          .
     09/02/2025  09:53 AM    <DIR>          ..
@@ -238,7 +222,7 @@ country model.
     You should see something similar to the following:
 
     ```
-    Directory of C:\work\my_training\my_project\frames\baseline
+    Directory of C:\work\my_tutorial\my_project\frames\baseline
 
     09/02/2025  09:53 AM    <DIR>          .
     09/02/2025  09:53 AM    <DIR>          ..
@@ -273,6 +257,6 @@ country model.
     - [Modify Campaign](modify_campaign.md)
     - [Modify Demographics](modify_demographics.md)
 
-## Next up - running your baseline frame
+## Next up: Running your baseline frame
 
 Try the [Run EMOD](run_emod.md) next to run your new baseline frame.

@@ -5,24 +5,23 @@
 The goal of this tutorial is for you to learn how to run a single simulation of EMOD-HIV
 using emodpy-workflow.  There are many ways to run EMOD:
 
-- from the command line
-- using emodpy-hiv
-- using emodpy-workflow
-- on an HPC
-- on your laptop
-- as part of a parameter calibration
-- as a parameter sweep
+- From the command line
+- Using emodpy-hiv
+- Using emodpy-workflow
+- On an HPC
+- On your laptop
+- As part of a parameter calibration
+- As a parameter sweep
 
 However, you will frequently want to run a single simulation when you creating different
 behaviors in your simulation or while debugging.
 
 ## Prerequisites
 
-If you are running on your local machine, you must have Docker installed and running.
-If you do not, please see [Installing Docker](../reference/installing_docker) for more information.
+To run EMOD per the instructions of this tutorial, you need to have done the followinng:
 
-Before you can run EMOD, you must have an emodpy-workflow project and a frame.
-If you don't have these, please see [Create project](create_project.md).
+- [Setup and installed emodpy-workflow](setup.md)
+- [Created a project and a frame](create_project.md)
 
 ## Control how and where EMOD runs
 
@@ -48,7 +47,7 @@ This is variable is used by emodpy-workflow to know what container to run EMOD i
 1. In the root of your project directory, open the `idmtools.ini` file.
 2. Towards the top of the file, you should see something similar to the following:
 
-    ```
+    ```doscon
     [ContainerPlatform]
     type          = Container
     job_directory = emodpy-jobs
@@ -64,7 +63,7 @@ Since we will be running EMOD multiple times, it is handy to put the results int
 own directory.
 
 1. Execute the following command in the root of your project (the directory that contains
-the `manifest.py` file).
+the `manifest.py` file):
 
     ```
     mkdir results
@@ -76,8 +75,7 @@ the `manifest.py` file).
 
 To run EMOD, we will use the emodpy-workflow `run` command.
 
-1. Execute the following command in the root of your project (the directory that contains
-the `manifest.py` file).
+1. Execute the following command in the root of your project:
 
     ```
     python -m emodpy_workflow.scripts.run -h
@@ -85,7 +83,7 @@ the `manifest.py` file).
 
     This should produce output similar to the following:
 
-    ```
+    ```doscon
     usage: run.py [-h] [-s SAMPLES_FILE] -N SUITE_NAME -F FRAMES [-f DOWNLOAD_FILENAMES] -o OUTPUT_DIR -p PLATFORM
                 [-S SWEEP]
 
@@ -120,17 +118,17 @@ the `manifest.py` file).
 
 3. Execute the following command:
 
-    ```
+    ```doscon
     python -m emodpy_workflow.scripts.run -N my_first_suite -F baseline -o results/my_first_run -p ContainerPlatform
     ```
 
     You should see output similar to the following:
 
-    ```
+    ```doscon
     INI File Found: C:\work\emodpy-training\idmtools.ini
     ```
 
-    ```
+    ```doscon
     Initializing ContainerPlatform with:
     {
     "job_directory": "emodpy-jobs"
@@ -151,16 +149,16 @@ the `manifest.py` file).
     experiment: 8ae683e4-8af6-4cd9-b8a3-5c63a5a10a17
     ```
 
-    ```
+    ```doscon
     Experiment Directory:
     C:\work\emodpy-training\emodpy-jobs\my_first_suite_2cf29edc-6b4d-459b-9542-3eae5c59a151\my_first_suite_8ae683e4-8af6-4cd9-b8a3-5c63a5a10a17
     ```
 
-    ```
+    ```doscon
     Container ID: c3a6a8de63be
     ```
 
-    ```
+    ```doscon
     You may try the following command to check simulations running status:
     idmtools container status 8ae683e4-8af6-4cd9-b8a3-5c63a5a10a17
     Wrote run.py receipt to: results/my_first_run\experiment_index.csv
@@ -176,9 +174,9 @@ the `manifest.py` file).
 Notice how in the last four lines of the output that there is information about finding
 the status of your output.  In this case, the following line
 
-    ```
-    idmtools container status 8ae683e4-8af6-4cd9-b8a3-5c63a5a10a17
-    ```
+```doscon
+idmtools container status 8ae683e4-8af6-4cd9-b8a3-5c63a5a10a17
+```
 
 says get status on experiment "8ae683e4-8af6-4cd9-b8a3-5c63a5a10a17".
 
@@ -188,17 +186,17 @@ If you execute that line, you should see something similar to:
 INI File Found: C:\work\emodpy-training\idmtools.ini
 ```
 
-```
+```doscon
 Experiment Directory:
 c:/work/emodpy-training/emodpy-jobs/my_first_suite_2cf29edc-6b4d-459b-9542-3eae5c59a151/my_first_suite_8ae683e4-8af6-4cd
 9-b8a3-5c63a5a10a17
 ```
 
-```
+```doscon
 Simulation Count: 1
 ```
 
-```
+```doscon
 SUCCEEDED (1)
 FAILED (0)
 RUNNING (0)
@@ -222,19 +220,19 @@ associated with running the experiment and simulations.  Let's go investigate.
 1. From the main project directory execute the following commands:
 
     === "Windows"
-        ```
+        ```doscon
         cd emodpy-jobs
         dir
         ```
     === "Linux"
-        ```
+        ```bash
         cd emodpy-jobs
         ls
         ```
 
     You should see something similar to:
 
-    ```
+    ```doscon
     Directory of C:\work\my_training\my_project\emodpy-jobs
 
     09/02/2025  01:30 PM    <DIR>          .
@@ -246,22 +244,22 @@ associated with running the experiment and simulations.  Let's go investigate.
     with the name we gave the suite.
 
 2. Look in the the **suite directory** by executing commands similar to the
-following - your directory name is likely different:
+following (your directory name is likely different):
 
     === "Windows"
-        ```
+        ```doscon
         cd my_first_suite_2f7f3943-0814-418a-9792-604fc7db2a31
         dir
         ```
     === "Linux"
-        ```
+        ```bash
         cd my_first_suite_2f7f3943-0814-418a-9792-604fc7db2a31
         ls
         ```
 
     You should see something similar to the following:
 
-    ```
+    ```doscon
     Directory of C:\work\my_training\my_project\emodpy-jobs\my_first_suite_2f7f3943-0814-418a-9792-604fc7db2a31
 
     09/02/2025  01:30 PM    <DIR>          .
@@ -275,19 +273,19 @@ following - your directory name is likely different:
 3. Look in the **experiment directory** `my_first_suite_857c15be-a4b9-4d46-86f5-d0c0f9a2fbe5`
 
     === "Windows"
-        ```
+        ```doscon
         cd my_first_suite_857c15be-a4b9-4d46-86f5-d0c0f9a2fbe5
         dir
         ```
     === "Linux"
-        ```
+        ```bash
         cd my_first_suite_857c15be-a4b9-4d46-86f5-d0c0f9a2fbe5
         ls
         ```
 
     You should see something similar to the following:
 
-    ```
+    ```doscon
     Directory of C:\work\my_training\my_project\emodpy-jobs\my_first_suite_2f7f3943-0814-418a-9792-604fc7db2a31\my_first_suite_857c15be-a4b9-4d46-86f5-d0c0f9a2fbe5
 
     09/02/2025  01:30 PM    <DIR>          .
@@ -310,19 +308,19 @@ following - your directory name is likely different:
 4. Look in the **simulation directory** `84efd93c-b13a-4bd4-ae54-f4ac5ab7aa9d`
 
     === "Windows"
-        ```
+        ```doscon
         cd 84efd93c-b13a-4bd4-ae54-f4ac5ab7aa9d
         dir
         ```
     === "Linux"
-        ```
+        ```bash
         cd 84efd93c-b13a-4bd4-ae54-f4ac5ab7aa9d
         ls
         ```
 
     You should see something similar to the following:
 
-    ```
+    ```doscon
     Directory of C:\work\my_training\my_project\emodpy-jobs\my_first_suite_2f7f3943-0814-418a-9792-604fc7db2a31\my_first_suite_857c15be-a4b9-4d46-86f5-d0c0f9a2fbe5\84efd93c-b13a-4bd4-ae54-f4ac5ab7aa9d
 
     09/02/2025  01:30 PM    <DIR>          .
@@ -345,12 +343,12 @@ following - your directory name is likely different:
     completion, you should look at the `stderr.txt` file and the `stdout.txt` file.
     These files can contain error messages directly from the EMOD executable.  Finally,
     the `output` directory contains the report data that was generated for this
-    realization/simulation.  [We will be using the `download` command to organize our
-    report files, but if that becomes limiting, you can access them directly.]
+    realization/simulation.  (We will be using the `download` command to organize our
+    report files, but if that becomes limiting, you can access them directly.)
 
     !!! Note
         If something is failing or not working like you expect, an EMOD developer
-        would need the contents of this directory in order to duplicate and debug
+        will need the contents of this directory in order to duplicate and debug
         the issue.
 
 5. View the end of the `stdout.txt` file.
@@ -358,7 +356,7 @@ following - your directory name is likely different:
     Use a text editor to view `stdout.txt` file and scroll to the bottom.  You should
     see something similar to the following:
 
-    ```
+    ```doscon
     00:01:56 [0] [I] [Simulation] Update(): Time: 32606.4 Year: 2049.8 Rank: 0 StatPop: 102414 Infected: 529
     00:01:57 [0] [I] [Simulation] Update(): Time: 32636.8 Year: 2049.9 Rank: 0 StatPop: 102636 Infected: 528
     00:01:57 [0] [I] [Simulation] Finalizing 'InsetChart.json' reporter.
@@ -387,7 +385,7 @@ following - your directory name is likely different:
 
     You should see something similar to:
 
-    ```
+    ```doscon
     (env) C:\work\my_training\my_project\emodpy-jobs\my_first_suite_2f7f3943-0814-418a-9792-604fc7db2a31\my_first_suite_857c15be-a4b9-4d46-86f5-d0c0f9a2fbe5\84efd93c-b13a-4bd4-ae54-f4ac5ab7aa9d>cd ..
 
     (env) C:\work\my_training\my_project\emodpy-jobs\my_first_suite_2f7f3943-0814-418a-9792-604fc7db2a31\my_first_suite_857c15be-a4b9-4d46-86f5-d0c0f9a2fbe5>cd ..
@@ -411,7 +409,7 @@ In our `run` command, you specified the output as `-o results/my_first_run`.
 
     You should see something similar to the following:
 
-    ```
+    ```doscon
     Directory of C:\work\my_training\my_project\results\my_first_run
 
     09/02/2025  02:52 PM    <DIR>          .
@@ -421,13 +419,13 @@ In our `run` command, you specified the output as `-o results/my_first_run`.
 
 2. Look at the contents of the `results/my_first_run/experiment_index.csv`
 
-    ```
+    ```doscon
     type results\my_first_run\experiment_index.csv
     ```
 
     You should see something similar to the following:
 
-    ```
+    ```doscon
     index,frame,experiment_id,experiment_name,experiment_directory
     0,baseline,857c15be-a4b9-4d46-86f5-d0c0f9a2fbe5,my_first_suite,C:\work\my_training\my_project\emodpy-jobs\my_first_suite_2f7f3943-0814-418a-9792-604fc7db2a31\my_first_suite_857c15be-a4b9-4d46-86f5-d0c0f9a2fbe5
     ```
@@ -448,7 +446,7 @@ let's get back to our project directory and get our report data.
 
     You should see something similar to the following:
 
-    ```
+    ```doscon
     (env) C:\work\my_training\my_project>python -m emodpy_workflow.scripts.download -h
     usage: download.py [-h] [-f FILES] [-r RECEIPT_FILE] [-s SAMPLES_FILE] [--suite-id SUITE_ID] [--exp-id EXPERIMENT_ID]
                     [-o OUTPUT_DIR] -p PLATFORM
@@ -479,11 +477,11 @@ let's get back to our project directory and get our report data.
 3. Execute the `download` command to download the InsetChart.json files
 
     === "Windows"
-        ```
+        ```doscon
         python -m emodpy_workflow.scripts.download -f "output/InsetChart.json" -r results\my_first_run\experiment_index.csv -p ContainerPlatform
         ```
     === "Linux"
-        ```
+        ```bash
         python -m emodpy_workflow.scripts.download -f "output/InsetChart.json" -r results/my_first_run/experiment_index.csv -p ContainerPlatform
         ```
 
@@ -494,7 +492,7 @@ let's get back to our project directory and get our report data.
     it contains a lot of high level statistics.
     - `-r results/my_first_run/experiment_index.csv` - Since we have a "receipt"
     file, we use it here to tell the `download` command where the data is.
-    - `p ContainerPlatform` - This tells the `download` command to use the
+    - `-p ContainerPlatform` - This tells the `download` command to use the
     Container protocol when getting data.
 
     As you can tell, there are many ways to specify the download of the data.
@@ -509,7 +507,7 @@ let's get back to our project directory and get our report data.
 
     Now when we look in this folder we should see something similar to the following:
 
-    ```
+    ```doscon
     Directory of C:\work\my_training\my_project\results\my_first_run
 
     09/02/2025  02:52 PM    <DIR>          .
@@ -528,7 +526,7 @@ let's get back to our project directory and get our report data.
 
     You should see something similar to the following:
 
-    ```
+    ```doscon
     Directory of C:\work\my_training\my_project\results\my_first_run\my_first_suite--0
 
     09/02/2025  02:52 PM    <DIR>          .
@@ -547,7 +545,7 @@ let's get back to our project directory and get our report data.
 
     You should see something similar to the following:
 
-    ```
+    ```doscon
     Directory of C:\work\my_training\my_project\results\my_first_run\my_first_suite--0\InsetChart
 
     09/02/2025  02:52 PM    <DIR>          .
@@ -571,7 +569,7 @@ in the simulation.
 
     You should see something similar to the following:
 
-    ```
+    ```doscon
     (env) C:\work\my_training\my_project>python -m emodpy_hiv.plotting.plot_inset_chart -h
     usage: plot_inset_chart.py [-h] [-d [DIR]] [-t [TITLE]] [-o OUTPUT]
                             [reference] [comparison1] [comparison2] [comparison3]
@@ -600,7 +598,7 @@ in the simulation.
 
 2. Execute the following command to plot the data in InsetChart.json:
 
-    ```
+    ```doscon
     python -m emodpy_hiv.plotting.plot_inset_chart -d results\my_first_run\my_first_suite--0\InsetChart
     ```
 
@@ -616,7 +614,7 @@ in the simulation.
     where prevalence goes up to about 1.5% in the middle of the simulation and then
     declines to about 0.5%.
 
-## Next up - modifying the simulation
+## Next up: Modifying the simulation
 
 Now that you have run EMOD once, investigate the other tutorials where you can
 modify the simulation and run the model.
