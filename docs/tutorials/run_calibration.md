@@ -18,15 +18,15 @@ While we are waiting for it to complete, we will review some details related to 
 
 ## Configure a calibration
 
-The **calibrate** command is the command for model calibration in emodpy-workflow. There are a few basic controls for 
-the **calibrate** command that can be used to adjust how long and how deeply it looks for good model parameterizations. 
+The `calibrate` command is the command for model calibration in emodpy-workflow. There are a few basic controls for 
+the `calibrate` command that can be used to adjust how long and how deeply it looks for good model parameterizations. 
 We will briefly review the ones we just used. Further controls are documented by **calibrate** itself:
 
 ```bash
 python -m emodpy_workflow.scripts.calibrate --help
 ```
 
-**calibrate** command controls :
+`calibrate` command controls:
 
 -i NUMBER : how many sequential iterations the process will perform, for example,
 
@@ -49,7 +49,7 @@ python -m emodpy_workflow.scripts.calibrate --help
 Very generally, more iterations and more parameterizations per iteration yield better results but increase computation
 time/cost.
 
-**optim_tool** algorithm command controls :
+`optim_tool` algorithm command controls:
 
 optim_tool is the algorithm we selected for scoring parameterizations.
 
@@ -76,7 +76,7 @@ reference documentation](../reference/ingest_form.md) for more information.
 ## Calibration output
 
 The above calibration command will put information related to calibration status and simulation scoring into the
-directory: calibration/**BaselineCalibration** (calibration name). The highest-numbered directory of iteration information (like iter1 in
+directory: `calibration/BaselineCalibration` (calibration name). The highest-numbered directory of iteration information (like iter1 in
 our example) contains pdf plots of information relevant to the progress of calibration and can provide information
 to aid in determining if the current set of hyperparameters being modified are sufficient.
 
