@@ -117,5 +117,8 @@ Good calibrations are the starting point for modeling real-world scientific ques
 are used as input to the `run` command, which can combine calibrated parameterizations with "what if" scenario/sweep
 parameterizations. This is often simply called "running scenarios" or "performing a sweep".
 
-The tutorial covering scenarios and can be found [here](sweep_parameter.md) and how-to guides can be found 
-[here](../how_to/how_to_sweep.md) .
+Additional resources:
+
+[Sweep parameters](sweep_parameter.md)
+
+[How to sweep](../how_to/how_to_sweep.md)
