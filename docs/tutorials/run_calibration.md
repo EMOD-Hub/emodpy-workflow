@@ -119,6 +119,5 @@ parameterizations. This is often simply called "running scenarios" or "performin
 
 Additional resources:
 
-[Sweep parameters](sweep_parameter.md)
-
-[How to sweep](../how_to/how_to_sweep.md)
+* [Sweep parameters tutorial](sweep_parameter.md)
+* [How to sweep](../how_to/how_to_sweep.md)
