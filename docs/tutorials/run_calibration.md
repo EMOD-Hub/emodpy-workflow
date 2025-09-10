@@ -111,3 +111,11 @@ The resultant plots are written by default to directory **plot_sims_with_referen
 
 ![image](../images/Prevalence_15-50.png)
 
+## What is next? Using a calibration!
+
+Good calibrations are the starting point for modeling real-world scientific questions. In emodpy-workflow, calibrations
+are used as input to the `run` command, which can combine calibrated parameterizations with "what if" scenario/sweep
+parameterizations. This is often simply called "running scenarios" or "performing a sweep".
+
+The tutorial covering scenarios and can be found [here](sweep_parameter.md) and how-to guides can be found 
+[here](../how_to/how_to_sweep.md) .
