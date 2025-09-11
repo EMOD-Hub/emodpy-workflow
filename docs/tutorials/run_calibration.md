@@ -70,8 +70,11 @@ The goal of calibration is to find model configurations that can reasonably matc
 - a scoring system for model output (good or bad, better or worse)
 
 Running **calibrate** generates the model output needed. Reference data and scoring systems are defined in an 
-**ingest form**, which is a multi-sheet Excel spreadsheet with some embedded helper macros. Please see the [ingest form 
-reference documentation](../reference/ingest_form.md) for more information.
+**ingest form**, which is a multi-sheet Excel spreadsheet with some embedded helper macros. 
+
+Additional resources:
+* [Filling an ingest form](filling_an_ingest_form.md)
+* [How-to modify an ingest form](../how_to/modify_an_ingest_form.md)
 
 ## Calibration output
 
