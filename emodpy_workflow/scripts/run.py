@@ -177,7 +177,7 @@ def parse_args():
                         help='Name of suite for experiments to be run within (Required).')
     parser.add_argument('-F', '--frames', dest='frames', type=str, required=True,
                         help='Comma-separated list of model frames to run (Required).')
-    parser.add_argument('-f', '--files', dest='download_filenames', type=str, default=None,
+    parser.add_argument('-d', '--files', dest='download_filenames', type=str, default=None,
                         help='Filenames to download from scenario simulations. '
                              'Paths relative to simulation directories. Comma-separated list if more than one '
                              '(Default: do not download files)')

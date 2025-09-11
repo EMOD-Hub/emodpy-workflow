@@ -36,7 +36,7 @@ Todo: reference to previous "Run EMOD" section.
 Download the InsetChart from the `results/no_health_system` directory:
 
 ```bash
-python -m emodpy_workflow.scripts.download -f output/InsetChart.json -r results/no_health_system/experiment_index.csv -p ContainerPlatform
+python -m emodpy_workflow.scripts.download -d output/InsetChart.json -r results/no_health_system/experiment_index.csv -p ContainerPlatform
 ```
 
 Use the plotting tool to compare the output:

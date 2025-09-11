@@ -92,7 +92,7 @@ Output file(s) from completed simulation(s) can be obtained via the `download` c
 the InsetChart.json file from each simulation in each experiment in the prior `run` execution:
 
 ```bash
-python -m emodpy_workflow.scripts.download -f output/InsetChart.json -r output/experiment_index.csv -p ContainerPlatform
+python -m emodpy_workflow.scripts.download -d output/InsetChart.json -r output/experiment_index.csv -p ContainerPlatform
 ```
 
 Full documentation of the `download` command is located [here](../how_to/how_to_download_data.md).
