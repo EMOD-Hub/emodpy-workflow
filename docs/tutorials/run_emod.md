@@ -85,7 +85,7 @@ To run EMOD, we will use the emodpy-workflow `run` command.
 
     ```doscon
     usage: run.py [-h] [-s SAMPLES_FILE] -N SUITE_NAME -f FRAMES [-d DOWNLOAD_FILENAMES] -o OUTPUT_DIR -p PLATFORM
-                [-S SWEEP]
+                [-w SWEEP]
 
     optional arguments:
     -h, --help            show this help message and exit
@@ -103,7 +103,7 @@ To run EMOD, we will use the emodpy-workflow `run` command.
                             Directory to write receipt to (always) and scenario output files (if downloading).
     -p PLATFORM, --platform PLATFORM
                             Platform to run simulations on (Required).
-    -S SWEEP, --sweep SWEEP
+    -w SWEEP, --sweep SWEEP
                             Python module to load with a sweep definition to generate extra experiments with (Default: no
                             sweeping).
     ```

@@ -83,7 +83,7 @@ Since there are four sweep entries, the command will generate:
 one suite of four experiments of one simulation, or 1 * 4 * 1 = 4 simulations in total.
 
 ```bash
-python -m emodpy_workflow.scripts.run -f baseline -N commercial_sex_scenarios -o output -p ContainerPlatform -S sweeps.py
+python -m emodpy_workflow.scripts.run -f baseline -N commercial_sex_scenarios -o output -p ContainerPlatform -w sweeps.py
 ```
 
 ## Downloading scenario output file(s)

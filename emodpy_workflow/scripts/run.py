@@ -186,7 +186,7 @@ def parse_args():
                              '(if downloading).')
     parser.add_argument('-p', '--platform', dest='platform', type=str, required=True,
                         help=f"Platform to run simulations on (Required).")
-    parser.add_argument('-S', '--sweep', dest='sweep', type=str, default=None,
+    parser.add_argument('-w', '--sweep', dest='sweep', type=str, default=None,
                         help='Python module to load with a sweep definition to generate extra experiments with '
                              '(Default: no sweeping).')
 
