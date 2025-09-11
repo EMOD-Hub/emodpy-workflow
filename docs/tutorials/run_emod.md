@@ -84,7 +84,7 @@ To run EMOD, we will use the emodpy-workflow `run` command.
     This should produce output similar to the following:
 
     ```doscon
-    usage: run.py [-h] [-s SAMPLES_FILE] -N SUITE_NAME -F FRAMES [-d DOWNLOAD_FILENAMES] -o OUTPUT_DIR -p PLATFORM
+    usage: run.py [-h] [-s SAMPLES_FILE] -N SUITE_NAME -f FRAMES [-d DOWNLOAD_FILENAMES] -o OUTPUT_DIR -p PLATFORM
                 [-S SWEEP]
 
     optional arguments:
@@ -94,7 +94,7 @@ To run EMOD, we will use the emodpy-workflow `run` command.
                             configs as-is if not provided.
     -N SUITE_NAME, --suite-name SUITE_NAME
                             Name of suite for experiments to be run within (Required).
-    -F FRAMES, --frames FRAMES
+    -f FRAMES, --frames FRAMES
                             Comma-separated list of model frames to run (Required).
     -d DOWNLOAD_FILENAMES, --files DOWNLOAD_FILENAMES
                             Filenames to download from scenario simulations. Paths relative to simulation directories.
@@ -119,7 +119,7 @@ To run EMOD, we will use the emodpy-workflow `run` command.
 3. Execute the following command:
 
     ```doscon
-    python -m emodpy_workflow.scripts.run -N my_first_suite -F baseline -o results/my_first_run -p ContainerPlatform
+    python -m emodpy_workflow.scripts.run -N my_first_suite -f baseline -o results/my_first_run -p ContainerPlatform
     ```
 
     You should see output similar to the following:
