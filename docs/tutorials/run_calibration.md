@@ -73,8 +73,9 @@ Running **calibrate** generates the model output needed. Reference data and scor
 **ingest form**, which is a multi-sheet Excel spreadsheet with some embedded helper macros. 
 
 Additional resources:
-* [Filling an ingest form](filling_an_ingest_form.md)
-* [How-to modify an ingest form](../how_to/modify_an_ingest_form.md)
+
+* [Filling an ingest form tutorial](filling_an_ingest_form.md)
+* [Ingest form how-to](../how_to/how_to_ingest_form.md)
 
 ## Calibration output
 
