@@ -79,6 +79,11 @@ You will also learn how to resample a calibration process (select calibrated
 parameterizations). However, it is not intended to teach the art/science of 
 calibration.
 
+## Fill a calibration ingest form
+
+The [filling an ingest form](filling_an_ingest_form.md) tutorial will teach the basic mechanics of filling in the 
+various sheets of an ingest form, a critical input to the calibration process.
+
 ## Use a calibration
 
 The ["Use a Calibration" tutorial](use_calibration.md) will show you how to use a calibration
