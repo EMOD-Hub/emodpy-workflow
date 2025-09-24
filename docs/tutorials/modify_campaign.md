@@ -457,9 +457,9 @@ from emodpy_hiv.countries.eswatini import Eswatini # noqa: F401
 4. go to emodpy_workflow, reinstall emodpy-hiv with the new change, verify you can use the new Country Eswatini model 
 by running:
 ```bash
-python -m hiv_workflow.scripts.new_frame --country Eswatini --dest Eswatini
-python -m hiv_workflow.scripts.available_parameters -F Eswatini
-python -m hiv_workflow.scripts.run -N Eswatini -F Eswatini -o results/ Eswatini -p ContainerPlatform
+python -m emodpy_workflow.scripts.new_frame --country Eswatini --dest Eswatini
+python -m emodpy_workflow.scripts.available_parameters -F Eswatini
+python -m emodpy_workflow.scripts.run -N Eswatini -F Eswatini -o results/Eswatini -p ContainerPlatform
 ```
 You should not need to edit the `campaign.py`, `config.py` or `demographics.py` file in the frame anymore.
 
