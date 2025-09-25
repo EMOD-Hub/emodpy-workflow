@@ -27,7 +27,8 @@ Key states in the CoC include:
 These states are configurable and form a modular representation of the HIV health system embedded in the campaign logic.
 ## 3. Prerequisites
 Before starting this tutorial, please complete the following:
-- [Create a project](./create_project.md) tutorial to create a new project with a baseline frame.
+
+- [Create project](./create_project.md) tutorial to create a new project with a baseline frame.
 - [Run EMOD](./run_emod.md) tutorial to understand how to run simulations and plot results with baseline frame.
 
 ## 4. Minimal Campaign Example: Removing All Campaign Features
