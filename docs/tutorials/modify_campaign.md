@@ -86,7 +86,8 @@ Here is an example of what you might see in the InsetChart comparing baseline an
 ![no_health_system.png](../images/no_health_system.png)
 ## 5. Modify the campaign inside a frame directly
 You may want to simulate a **change in outcomes** (like introducing a vaccine) without modeling every step in the 
-delivery system.
+delivery system. The easiest and most direct way to do this is to modify the `campaign.py` inside a frame directly.
+
 Please follow the steps below to add a vaccine to campaign.
 
 ### 5.a. Extend frame
@@ -99,13 +100,14 @@ python -m emodpy_workflow.scripts.extend_frame --source baseline --dest vaccine
 
 Modify `campaign.py` under `/workspaces/emodpy-workflow/my_project/frames/vaccine` folder to include a function that 
 adds a vaccine intervention. This example adds:
+
 - Add a ControlledVaccine with a constant WaningConfig.
 - Set initial efficacy = 1.0 by default.
 - Distribute the vaccine using STIDebut.
 - Start at year 2026.
 - Make initial efficacy a hyperparameter of the method.
 
-
+Here is an example of how to implement this: (add the following import lines and function to `campaign.py`)
 ```python linenums="1"
 from emodpy_hiv.campaign.individual_intervention import ControlledVaccine
 from emodpy_hiv.campaign.distributor import add_intervention_triggered
@@ -125,7 +127,7 @@ def add_hiv_vaccine(campaign, vaccine_efficacy=1.0):
     )
     return campaign
 ```
-In the same `campaign.py` file, add the following line in the `get_campaign_parameterized_calls` function to call the 
+In the same `campaign.py` file, add the following line 4 - 5 in the `get_campaign_parameterized_calls` function to call the 
 function.
 
 ```python linenums="1"
@@ -146,10 +148,11 @@ You should see `vaccine_efficacy` listed under Campaign parameters.
 
 
 ### 5.d. Run EMOD
-
+Now you can run EMOD with the new vaccine frame:
 ```bash
 python -m emodpy_workflow.scripts.run -N Vaccine -F vaccine -o results/vaccine -p ContainerPlatform
 ```
+
 - Optional: Check that ControlledVaccine is added to campaign.json.
 
 Please see the [run EMOD](./run_emod.md) tutorial for more details on this command.
@@ -158,6 +161,7 @@ Please see the [run EMOD](./run_emod.md) tutorial for more details on this comma
 
 After running the simulation, you can examine the results by plotting the InsetChart to compare the vaccine frame with 
 the baseline.
+
 Let's download the InsetChart to the `results/vaccine` directory:
 ```bash
 python -m emodpy_workflow.scripts.download -f output/InsetChart.json -r results/vaccine/experiment_index.csv -p ContainerPlatform
@@ -180,7 +184,7 @@ First, you need to download the ReportHIVByAgeAndGender to the `results/vaccine`
 ```bash
 python -m emodpy_workflow.scripts.download -f output/ReportHIVByAgeAndGender.csv -r results/vaccine/experiment_index.csv -p ContainerPlatform
 ```
-Visualize prevalence across age groups:
+Then, visualize prevalence across age groups:
 
 ```bash
 python -m emodpy_hiv.plotting.plot_hiv_by_age_and_gender results/vaccine/Vaccine--0/ReportHIVByAgeAndGender/ -p prevalence -a -m -o images/vaccine
@@ -191,22 +195,22 @@ Here is an example of what you might see in the ReportHIVByAgeAndGender for vacc
 ## 6. Modify the campaign by changing the Country Model
 ### 6.a. Country Model Basics
 
-A **country model** in `emodpy-hiv` encapsulates campaign logic specific to a setting (like Zambia).
+A **country model** in `emodpy-hiv` encapsulates campaign logic specific to a setting (like **Zambia** and **ZambiaForTraining**).
 Subclassing allows you to override methods like `add_state_HCTUptakeAtDebut()` to customize intervention logic.
 
 You can find country models in the `emodpy_hiv/country` directory. Each country model is a subclass of the base 
-`Country` class and implements methods to define the cascade of care and other interventions.You can create a new 
+**Country** class and implements methods to define the cascade of care and other interventions.You can create a new 
 country model by subclassing an existing one and overriding specific methods to change behavior. This allows you to 
 tailor the campaign logic to different settings or scenarios, which has more control than editing the campaign.py 
 inside the frame.
 
-In this example, we will create a new country model for Eswatini by subclassing the Zambia country model and modifying 
-the `add_state_HCTUptakeAtDebut()` method to distribute a long-lasting form of PrEP at sexual debut.
+In this example, we will create a new country model for **Eswatini** by subclassing the **ZambiaForTraining** country model 
+and modifying the `add_state_HCTUptakeAtDebut()` method to distribute a long-lasting form of PrEP at sexual debut.
 
 ### 6.b. Create Eswatini country model
 
-In the modified_coc directory, create a new country model called Eswatini by subclassing the Zambia Country Model and 
-overrides add_state_HCTUptakeAtDebut() method to distributes the vaccine when they debut.
+In the modified_coc directory, create a new country model called **Eswatini** by subclassing the **ZambiaForTraining** Country 
+Model and overrides `add_state_HCTUptakeAtDebut()` method to distributes the vaccine when they debut.
 Here are the steps:
 
 1. *Copy the `add_state_HCTUptakeAtDebut()` Function:*
@@ -214,26 +218,32 @@ Here are the steps:
     Copy this function from the Country class and cascade_of_care.py to your new subclass.
 
 2. *Modify Event Listening Duration:*
+    
+    Adjust the copied function so that it behaves like the baseline, but stops after 35 years or by 2025 (i.e., stop 
+listening for the **STIDebut** event after that time).
 
-   Adjust the copied function so that it behaves like the baseline, but stops after 35 years or by 2025 (i.e., stop 
-   listening for the STIDebut event after that time).
 3. *Insert Long-Lasting PrEP Distribution:*
 
-   Before the normal decision point (the sigmoid choice), add code to distribute a very long-lasting form of PrEP.
+    Before the normal decision point (the sigmoid choice), add code to distribute a very long-lasting form of PrEP.
 
 4. *Update Uptake Choice Based on New Event:*
 
-   Modify the distribution of the uptake choice so it depends on the new sigmoid_event.
+    Modify the distribution of the uptake choice so it depends on the new sigmoid_event.
 
-On the left side is the original function from Zambia, and on the right is the modified function for Eswatini.
+On the left side is the original function from **ZambiaForTraining**, and on the right is the modified function for **Eswatini**.
 
-| Left: Zambia (original) | Right: Eswatini (modified) |
-|-------------------------|----------------------------|
+**Comparison of HCT Uptake at Debut function:**
+
+| ZambiaForTraining (original) | Eswatini (modified) |
+|-----------------------------|---------------------|
+| See comparison below        | See comparison below|
+
 ![img_1.png](../images/HCT_Uptake.png)
+
 Example `eswatini.py`:
 
-*In this example, the ZambiaForTraining class serves as the base for Eswatini. ZambiaForTraining is similar to the 
-Zambia country model but utilizes a smaller population to accelerate simulation time. You may select an alternative 
+*In this example, the ***ZambiaForTraining*** class serves as the base for ***Eswatini***. ***ZambiaForTraining*** is similar to the 
+***Zambia*** country model but utilizes a smaller population to accelerate simulation time. You may select an alternative 
 base class if required.*
 ```python linenums="1"
 import emod_api
@@ -354,13 +364,13 @@ python -m emodpy_workflow.scripts.new_frame --country Eswatini --dest eswatini_c
 ```
 Now move the `eswatini.py` file to the new frame: `frames/eswatini_coc` directory. Ideally, if you want to make 
 this new country model reusable, you can put it in the `emodpy_hiv/country` directory and import it in `campaign.py`. 
-For this tutorial, we will keep it simple and just move the file to the frame directory.
+Please see [step 6.g](#6g-optional-public-eswatini-country-model) for more details. For the current step in this 
+tutorial, we will keep it simple and just move the file to the frame directory.
 
-Also, modify the import statement in `campaign.py`, `config.py`, and `demographics.py` to import the Eswatini country 
+Then, modify the import statement in `campaign.py`, `config.py`, and `demographics.py` to import the **Eswatini** country 
 model:
 
-In these files, comment out the existing import statement for the country model and add the new import statement for 
-Eswatini:
+In each file, comment out the current country model import and replace it with an import for **Eswatini**.
 
 ```python linenums="1"
 # from emodpy_hiv.countries import Eswatini as country_model
@@ -370,7 +380,7 @@ from eswatini import Eswatini as country_model
 ```
 
 ### 6.d. Run EMOD
-
+Now you can run EMOD with the new eswatini_coc frame:
 ```bash
 python -m emodpy_workflow.scripts.run -N Eswatini -F eswatini_coc -o results/eswatini_coc -p ContainerPlatform
 ```
@@ -398,10 +408,10 @@ You should see prevalence drops but costs go up after year 2025 when the long-la
 
 ### 6.f. Plot ReportHIVByAgeAndGender
 
-Plot prevalence in ReportHIVByAgeAndGender across ages to see how it takes a while before we see prevalence drop in 
-the older groups:
+Next, plot prevalence in ReportHIVByAgeAndGender across ages to see how it takes a while before we see prevalence drop in 
+the older groups.
 
-First, you need to download the ReportHIVByAgeAndGender to the `results/eswatini_coc` directory:
+You need to download the ReportHIVByAgeAndGender to the `results/eswatini_coc` directory:
 
 ```bash
 python -m emodpy_workflow.scripts.download -f output/ReportHIVByAgeAndGender.csv -r results/eswatini_coc/experiment_index.csv -p ContainerPlatform
@@ -417,6 +427,7 @@ Here is an example of what you might see in the ReportHIVByAgeAndGender for eswa
 ### 6.g. Optional: Public Eswatini Country Model
 If you want to make the Eswatini country model reusable, you can put it in the emodpy_hiv/country directory and import 
 it in campaign.py. Here are the steps:
+
 1. move `eswatini.py` to `/emodpy-hiv/emodpy_hiv/countries/eswatini/eswatini.py`
 
 2. add a `__init__.py` file under `emodpy_hiv/countries/eswatini` folder with:
@@ -445,6 +456,7 @@ creating minimal campaigns, adding interventions directly, and customizing count
 mastering these techniques, you can tailor simulations to specific research questions and programmatic needs.
 
 For further customization, refer to the following tutorials:
+
 - [Modify Config](./modify_configuration.md): Adjust simulation parameters and settings.
 - [Modify Demographics](./modify_demographics.md): Change population structure and attributes.
 - [Modify Reports](./modify_reports.md): Customize output reports and data collection.
