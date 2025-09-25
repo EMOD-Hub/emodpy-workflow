@@ -6,6 +6,8 @@ on:
     paths:
       - 'docs/**'
       - 'mkdocs.yml'
+  # Allows manual run from the Actions tab
+  workflow_dispatch:
 
 jobs:
   build:
