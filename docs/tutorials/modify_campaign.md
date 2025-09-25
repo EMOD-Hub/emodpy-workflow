@@ -1,29 +1,4 @@
 # Modify Campaign
-## Contents
-
-- [1. Campaign Basics](#1-campaign-basics)
-- [2. Cascade of Care in the HIV Health System](#2-cascade-of-care-in-the-hiv-health-system)
-- [3. Prerequisites](#3-prerequisites)
-- [4. Minimal Campaign Example: Removing All Campaign Features](#4-minimal-campaign-example-removing-all-campaign-features)
-  - [4.a Create a baseline frame with minimal campaign](#4a-create-a-baseline-frame-with-minimal-campaign)
-  - [4.b Run EMOD](#4b-run-emod)
-  - [4.c Plot InsetChart](#4c-plot-insetchart)
-- [5. Modify the campaign inside a frame directly](#5-modify-the-campaign-inside-a-frame-directly)
-  - [5.a Extend frame](#5a-extend-frame)
-  - [5.b Add HIV Vaccine directly](#5b-add-hiv-vaccine-directly)
-  - [5.c Check hyperparameter](#5c-check-hyperparameter)
-  - [5.d Run EMOD](#5d-run-emod)
-  - [5.e Plot InsetChart](#5e-plot-insetchart)
-  - [5.f Plot ReportHIVByAgeAndGender](#5f-plot-reporthivbyageandgender)
-- [6. Modify the campaign by changing the Country Model](#6-modify-the-campaign-by-changing-the-country-model)
-  - [6.a Country Model Basics](#6a-country-model-basics)
-  - [6.b Create Eswatini country model](#6b-create-eswatini-country-model)
-  - [6.c Create new frame](#6c-create-new-frame)
-  - [6.d Run EMOD](#6d-run-emod)
-  - [6.e Plot insetChart](#6e-plot-insetchart)
-  - [6.f Plot ReportHIVByAgeAndGender](#6f-plot-reporthivbyageandgender)
-  - [6.g Optional: Public Eswatini Country Model](#6g-optional-public-eswatini-country-model)
-- [7. Conclusion](#7-conclusion)
 
 ## 1. Campaign Basics
 
