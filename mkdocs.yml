@@ -51,6 +51,7 @@ nav: # Navigation structure for the documentation
     - how_to/how_to_calibrate_frame.md
     - how_to/how_to_sweep.md
     - how_to/how_to_download_data.md
+    - how_to/how_to_use_individual_properties.md
   - Tutorials: # this creates a section in the TOC
     - tutorials/get_started.md
     - tutorials/setup.md

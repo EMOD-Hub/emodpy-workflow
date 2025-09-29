@@ -158,7 +158,8 @@ def main(args):
         from emodpy_workflow.scripts.download import main as download
         platform.wait_till_done(item=suite)
         dl_args = Namespace(**{'files': args.download_filenames, 'receipt_file': receipt_path,
-                               'platform': platform._config_block})
+                               'platform': platform._config_block,
+                               'suite_id': None, 'experiment_id': None, 'samples_file': None, 'output_dir': None})
         download(args=dl_args)
 
 
