@@ -10,13 +10,14 @@ on the **Observations metadata** sheet. The macro is executed by clicking this b
 Steps:
 
 1. Add or delete Data Channel entries.
-2. Select or deselect (deselecting means set to: **--select--**) the corresponding scaling type. Scaling means the 
-data channel scales with population (e.g. a population count) and Non-scaling means it does not (e.g. a population 
-fraction).
+2. Select the corresponding scaling type from the dropdown menus for the modified entries. Scaling means the data 
+channel scales with population (for example, a population count) and Non-scaling means it does not (for example, a 
+population fraction). A value of **--select--** is blank.
 3. Click the above button.
 
-Any observational data sheets that were specified that did previously exist will be created, and any that are no
-longer specified will be deleted.
+Any observational data sheets that were specified that did previously exist will be created, and any that were removed
+(no longer specified) will be deleted. The above button will create and/or remove observational data sheets to ensure
+full consistency.
 
 ## How to generate or recreate an observation data sheet data entry grid
 
