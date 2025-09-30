@@ -1,5 +1,5 @@
 site_name: emodpy-workflow
-site_url: https://emod-hub.github.io/emodpy-workflow # https://docs.idmod.org/emodpy-workflow
+site_url: https://emod.idmod.org/emodpy-workflow/
 repo_name: EMOD-Hub/emodpy-workflow # update to your repo name
 repo_url: https://github.com/EMOD-Hub/emodpy-workflow # update to your repo URL
 edit_uri: tree/main/docs/ # path to the docs folder in your repo
