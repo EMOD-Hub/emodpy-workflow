@@ -51,6 +51,7 @@ nav: # Navigation structure for the documentation
     - how_to/how_to_calibrate_frame.md
     - how_to/how_to_sweep.md
     - how_to/how_to_download_data.md
+    - how_to/how_to_publish_new_country_model.md
   - Tutorials: # this creates a section in the TOC
     - tutorials/get_started.md
     - tutorials/setup.md
@@ -59,7 +60,9 @@ nav: # Navigation structure for the documentation
     - tutorials/modify_reports.md
     - tutorials/modify_configuration.md
     - tutorials/modify_demographics.md
-    - tutorials/modify_campaign.md
+    - tutorials/modify_campaign_1_minimal_campaign.md
+    - tutorials/modify_campaign_2_add_vaccine.md
+    - tutorials/modify_campaign_3_new_country_model.md
     - tutorials/using_parameterized_calls.md
     - tutorials/sweep_parameter.md
     - tutorials/run_calibration.md
