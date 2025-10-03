@@ -5,10 +5,10 @@
 Configuration parameters are simulation-wide parameters that affect how EMOD runs at a fundamental level. These include
 parameters related, but not limited to:
 
-* model duration, timestep length, and when the model starts
-* how a disease progresses and transmits
-* whether agents can be born, age, and/or die
-* output report specifications
+* Model duration, timestep length, and when the model starts
+* How a disease progresses and transmits
+* Whether agents can be born, age, and/or die
+* Output report specifications
 
 ## Modifying a Configuration Parameter
 
@@ -36,7 +36,9 @@ python -m emodpy_workflow.scripts.extend_frame --source baseline --dest more_inf
 
 #### Edit the frame config.py
 
-Here we edit the `initialize_config` function, opting to not make a hyperparameter for setting `Base_Infectivity`.
+Here we edit the `initialize_config` function, opting to not make a hyperparameter for setting `Base_Infectivity` for
+simplicity. An alternative example that makes a hyperparameter is located at 
+[how to use elements in a frame](../how_to/how_to_use_elements_in_frame.md).
 
 Edit file `frames/more_infectious/config.py` to have 10 times greater infectivity. It should contain the following:
 
