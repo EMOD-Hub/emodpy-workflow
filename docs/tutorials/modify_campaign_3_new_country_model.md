@@ -1,0 +1,274 @@
+# Modify campaign: New country model
+
+## Country model basics
+
+A **country model** in `emodpy-hiv` encapsulates campaign logic specific to a setting (like `Zambia` and `ZambiaForTraining`).
+Subclassing allows you to override methods like `add_state_HCTUptakeAtDebut()` to customize intervention logic.
+
+You can find country models in the `emodpy_hiv/country` directory. Each country model is a subclass of the base 
+`Country` class and implements methods to define the cascade of care and other interventions.You can create a new 
+country model by subclassing an existing one and overriding specific methods to change behavior. This allows you to 
+tailor the campaign logic to different settings or scenarios, which has more control than editing the campaign.py 
+inside the frame. Moreover, country models are inherently more shareable and reusable between researchers as they can 
+be added to `emodpy-hiv` for future projects.
+
+In this example, we will create a new country model for `Eswatini` by subclassing the `ZambiaForTraining` country model 
+and modifying the `add_state_HCTUptakeAtDebut()` method to distribute a long-lasting form of PrEP at sexual debut.
+
+## Prerequisites
+Before starting this tutorial, please complete the following:
+
+- [Create project](./create_project.md) tutorial to create a new project with a baseline frame.
+- [Run EMOD](./run_emod.md) tutorial to understand how to run simulations and plot results with baseline frame.
+- [Modify Campaign: Minimal Campaign](./modify_campaign_1_minimal_campaign.md) to understand the basics of campaign 
+structure, including the cascade of care (CoC).
+- [Modify Campaign: Add HIV Vaccine](./modify_campaign_2_add_vaccine.md) to understand how to add interventions 
+directly to a campaign.
+
+## Modify the campaign by changing the country model
+
+### a. Create Eswatini country model
+
+In the modified_coc directory, create a new country model called `Eswatini` by subclassing the `ZambiaForTraining` 
+Country Model and override `add_state_HCTUptakeAtDebut()` method to distribute the vaccine when they debut.
+Here are the steps:
+
+1. Copy the `add_state_HCTUptakeAtDebut()` Function:
+
+    Copy this function from the Country class and cascade_of_care.py to your new subclass. Please see 
+[Modify Campaign: Minimal Campaign](./modify_campaign_1_minimal_campaign.md) Cascade of Care section for more details on this function.
+
+2. Modify Event Listening Duration:
+    
+    Adjust the copied function so that it behaves like the baseline, but stops after 35 years or by 2025 (i.e., stop 
+listening for the **STIDebut** event after that time). In order to do this, set the duration parameter in the 
+add_intervention_triggered() function to 365 * 35 days (35 years) when distributing the uptake_choice intervention.
+
+3. Insert Long-Lasting PrEP Distribution:
+
+    Before the normal decision point (the sigmoid choice), begin listening for the **STIDebut** event, distribute a very long-lasting form of 
+PrEP(ControlledVaccine), and broadcast a new event, **Enter_Health_Care_System**, starting in the year 2025.
+
+4. Update Uptake Choice Based on New Event:
+
+    Modify the distribution of the uptake_choice intervention so it depends on the new **Enter_Health_Care_System** 
+event starting in year 2025.
+
+On the left side is the original function from `ZambiaForTraining`, and on the right is the modified function for `Eswatini`.
+
+**Comparison of HCT Uptake at Debut function:**
+
+| ZambiaForTraining (original) | Eswatini (modified) |
+|-----------------------------|---------------------|
+| See comparison below        | See comparison below|
+
+![img_1.png](../images/HCT_Uptake.png)
+
+Example `eswatini.py`:
+
+*In this example, the `ZambiaForTraining` class serves as the base for `Eswatini`. `ZambiaForTraining` is similar to the 
+`Zambia` country model but utilizes a smaller population to accelerate simulation time.* 
+
+*You may select any country model class to use as a base class in your projects.*
+
+```python linenums="1"
+import emod_api
+from emodpy_hiv.campaign.distributor import add_intervention_triggered
+from emodpy_hiv.campaign.individual_intervention import (
+    HIVSigmoidByYearAndSexDiagnostic,
+    ControlledVaccine,
+    BroadcastEvent,
+    Sigmoid
+)
+from emodpy_hiv.campaign.common import CommonInterventionParameters, PropertyRestrictions
+import emodpy_hiv.campaign.cascade_of_care as coc
+from emodpy_hiv.countries import ZambiaForTraining 
+from emodpy_hiv.campaign.waning_config import Constant
+
+
+class Eswatini(ZambiaForTraining):
+    country_name = "eSwatini"
+
+    @classmethod
+    def add_state_HCTUptakeAtDebut(
+        cls,
+        campaign: emod_api.campaign,
+        start_year: float,
+        node_ids: list[int] = None
+    ):
+        disqualifying_properties = [
+            coc.CascadeState.LOST_FOREVER,
+            coc.CascadeState.ON_ART,
+            coc.CascadeState.LINKING_TO_ART,
+            coc.CascadeState.ON_PRE_ART,
+            coc.CascadeState.LINKING_TO_PRE_ART,
+            coc.CascadeState.ART_STAGING
+        ]
+        initial_trigger = coc.CustomEvent.STI_DEBUT
+        hct_upate_at_debut_pv = coc.CascadeState.HCT_UPTAKE_AT_DEBUT
+
+        # set up health care testing uptake at sexual debut by time
+        # stop listing for STIDebut after 35 years.
+        female_multiplier = 1.0
+        duration = 365 * 35
+        uptake_choice = HIVSigmoidByYearAndSexDiagnostic(
+            campaign,
+            year_sigmoid=Sigmoid(min=-0.005, max=0.05, mid=2005, rate=1),
+            positive_diagnosis_event=coc.HCT_TESTING_LOOP_TRIGGER,
+            negative_diagnosis_event=coc.HCT_UPTAKE_POST_DEBUT_TRIGGER_1,
+            female_multiplier=female_multiplier,
+            common_intervention_parameters=CommonInterventionParameters(
+                disqualifying_properties=disqualifying_properties,
+                new_property_value=hct_upate_at_debut_pv
+            )
+        )
+        add_intervention_triggered(
+            campaign,
+            intervention_list=[uptake_choice],
+            triggers_list=[initial_trigger],
+            start_year=start_year,
+            property_restrictions=PropertyRestrictions(
+                individual_property_restrictions=[['Accessibility:Yes']]
+            ),
+            node_ids=node_ids,
+            event_name='HCTUptakeAtDebut: state 0 (decision, sigmoid by year and sex)',
+            duration=duration
+        )
+
+        # insert a long-lasting ControlledVaccine
+        laprep_start_year = start_year + duration / 365
+        vaccine = ControlledVaccine(
+            campaign,
+            waning_config=Constant(0.99),
+            common_intervention_parameters=CommonInterventionParameters(
+                disqualifying_properties=disqualifying_properties,
+                new_property_value=hct_upate_at_debut_pv
+            )
+        )
+        broadcast_event = BroadcastEvent(
+            campaign=campaign,
+            broadcast_event="Enter_Health_Care_System",
+            common_intervention_parameters=CommonInterventionParameters(
+                disqualifying_properties=disqualifying_properties,
+                new_property_value=hct_upate_at_debut_pv
+            )
+        )
+        add_intervention_triggered(
+            campaign=campaign,
+            intervention_list=[vaccine, broadcast_event],
+            triggers_list=[initial_trigger],
+            start_year=laprep_start_year,
+            property_restrictions=PropertyRestrictions(
+                individual_property_restrictions=[['Accessibility:Yes']]
+            ),
+            node_ids=node_ids,
+            event_name='HCTUptakeAtDebut: LA-PrEP on STI Debut'
+        )
+        # distribute the SigmoidByYearAndSexDiagnostic intervention by Enter_Health_Care_System event
+        add_intervention_triggered(
+            campaign,
+            intervention_list=[uptake_choice],
+            triggers_list=["Enter_Health_Care_System"],
+            start_year=laprep_start_year,
+            property_restrictions=PropertyRestrictions(
+                individual_property_restrictions=[['Accessibility:Yes']]
+            ),
+            node_ids=node_ids,
+            event_name='HCTUptakeAtDebut: state 0 triggered by Enter_Health_Care_System after 2025'
+        )
+        return (
+            coc.HCT_TESTING_LOOP_TRIGGER,  # return the trigger for the HCTTestingLoop state
+            coc.HCT_UPTAKE_POST_DEBUT_TRIGGER_1
+        )
+```
+### b. Create new frame
+
+Make a new frame with this new `Eswatini` country model:
+
+```bash
+python -m emodpy_workflow.scripts.new_frame --country Eswatini --dest eswatini_coc
+```
+
+Since this is a new country model, the `emodpy_workflow` does not know where to find it. You may get a warning saying 
+this country model is not found. You can ignore this warning for now.
+
+Now move the `eswatini.py` file to the new frame: `frames/eswatini_coc` directory. Ideally, if you want to make 
+this new country model reusable, you can put it in the `emodpy_hiv/country` directory and import it in `campaign.py`. 
+Please see [step f](#f-optional-public-eswatini-country-model) for more details. For the current step in this 
+tutorial, we will keep it simple and just move the file to the frame directory.
+
+Then, modify the import statement in `campaign.py`, `config.py`, and `demographics.py` to import the `Eswatini` country 
+model:
+
+In each file, comment out the current country model import and replace it with an import for `Eswatini`.
+
+```python linenums="1"
+# from emodpy_hiv.countries import Eswatini as country_model
+import sys, os
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from eswatini import Eswatini as country_model
+```
+
+### c. Run EMOD
+Now you can run EMOD with the new `eswatini_coc` frame:
+```bash
+python -m emodpy_workflow.scripts.run -N Eswatini -f eswatini_coc -o results/eswatini_coc -p ContainerPlatform
+```
+Please see the [run EMOD](./run_emod.md) tutorial for more details on this command.
+
+### d. Plot InsetChart
+
+After running the simulation, you can examine the results by plotting the **InsetChart** to compare the `eswatini_coc` frame 
+with the baseline.
+Download the **InsetChart** to the `results/eswatini_coc` directory:
+
+```bash
+python -m emodpy_workflow.scripts.download -d output/InsetChart.json -r results/eswatini_coc/experiment_index.csv -p ContainerPlatform
+```
+
+Use the plotting tool to compare the output with the baseline:
+
+```bash
+python -m emodpy_hiv.plotting.plot_inset_chart results/my_first_run/my_first_suite--0/InsetChart/InsetChart_sample00000_run00001.json -d results/eswatini_coc/Eswatini--0/InsetChart/ -t "InsetChart-eswatini_coc" -o images/eswatini_coc
+```
+Here is an example of what you might see in the **InsetChart** comparing baseline and `eswatini_coc`:
+![eswatini_cc.png](../images/eswatini_cc.png)
+
+You should see prevalence drops but costs go up after year 2025 when the long-lasting PrEP is introduced. The red line 
+is the baseline and the blue line is the `eswatini_coc` frame.
+
+### e. Plot ReportHIVByAgeAndGender
+
+Next, we plot the number of infected people from **ReportHIVByAgeAndGender** across ages to highlight that it takes decades
+for older age group infection counts to stabilize in response to the Eswatini campaign.
+
+You need to download the **ReportHIVByAgeAndGender** to the `results/eswatini_coc` directory:
+
+```bash
+python -m emodpy_workflow.scripts.download -d output/ReportHIVByAgeAndGender.csv -r results/eswatini_coc/experiment_index.csv -p ContainerPlatform
+```
+Visualize infection counts across age groups:
+
+```bash
+python -m emodpy_hiv.plotting.plot_hiv_by_age_and_gender results/eswatini_coc/Eswatini--0/ReportHIVByAgeAndGender/ -p prevalence -a -m -o images/eswatini_coc
+```
+Here is an example of what you might see in the **ReportHIVByAgeAndGender** for eswatini_coc frame:
+![eswatini_cc_age_group.png](../images/eswatini_cc_age_group.png)
+
+### f. Optional: Public Eswatini country model
+If you want to make the `Eswatini` country model reusable, you can put it in `emodpy-hiv` and use it in `emodpy-workflow`.
+Please refer to [How to publish a new country model](../how_to/how_to_publish_new_country_model.md) for more details.
+
+## Conclusion
+
+The 3 campaign tutorials demonstrated how to modify campaign logic in EMOD simulations using `emodpy_workflow`, including 
+creating minimal campaigns, adding interventions directly, and customizing country models for advanced scenarios. By 
+mastering these techniques, you can tailor simulations to specific research questions and programmatic needs.
+
+For further customization, refer to the following tutorials:
+
+- [Modify Config](./modify_configuration.md): Adjust simulation parameters and settings.
+- [Modify Demographics](./modify_demographics.md): Change population structure and attributes.
+- [Modify Reports](./modify_reports.md): Customize output reports and data collection.
+
+Combining these approaches enables comprehensive control over your EMOD workflows and simulation outcomes.
