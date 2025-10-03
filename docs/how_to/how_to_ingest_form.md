@@ -1,5 +1,8 @@
 # Ingest Form How-to guides
 
+The [filling an ingest form tutorial](../tutorials/filling_an_ingest_form.md) covers the context in which the macros
+noted in this how-to are used.  
+
 ## How to generate or delete observation data sheets
 
 Adding and removing observational data sheets are both accomplished in an ingest form by use of an Excel macro
