@@ -1,7 +1,9 @@
 # Individual Properties (IndividualProperty)
 
 Individual properties can be defined in a country model or a project frame. The examples here assume they are in a 
-frame.
+frame. More details regarding Individual properties can be found in the 
+[modify demographics tutorial](../tutorials/modify_demographics.md) and in the 
+[IndividualProperties reference documentation](https://docs.idmod.org/projects/emodpy-hiv/en/latest/emod/model-properties.html).
 
 ## How to create a new IndividualProperty
 
@@ -9,10 +11,10 @@ IndividualProperties are part of EMOD demographics, so they are added to `demogr
 
 For example, to add a property:
 
-* named **ReceivedVaccine** 
-* that can have values of **Yes** or **No**
-* with a starting population distribution of 100% **No**
-* that applies to all simulation nodes
+* Named **ReceivedVaccine** 
+* That can have values of **Yes** or **No**
+* With a starting population distribution of 100% **No**
+* That applies to all simulation nodes
 
 ... add the following to function **initialize_demographics** in `demographics.py` in your chosen frame:
 

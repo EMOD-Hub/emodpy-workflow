@@ -49,11 +49,11 @@ The standard configuration of EMOD-HIV represents four different types of relati
 Depending on their age, gender, spatial location, etc., a model agent may enter into no, one, or multiple types (and
 counts) of relationships. Demographics parameters exist to specify, for each relationship type:
 
-* the rate of such relationship formation
-* distribution of relationship duration
-* the maximum number of such relationships any given agent may have
-* the coital act rate
-* the likelihood of condom usage per coital act
+* The rate of such relationship formation
+* Distribution of relationship duration
+* The maximum number of such relationships any given agent may have
+* The coital act rate
+* The likelihood of condom usage per coital act
 
 ## Example - Modifying commercial relationship formation
 
