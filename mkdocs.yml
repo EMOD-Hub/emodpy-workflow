@@ -42,6 +42,7 @@ nav: # Navigation structure for the documentation
     - reference/sweeps.md
     - reference/dtktools_comparison.md
     - reference/age_bin_format.md
+    - reference/filling_an_ingest_form.md
   - How-to:
     - how_to/how_to_index.md
     - how_to/how_to_make_project.md
@@ -66,7 +67,6 @@ nav: # Navigation structure for the documentation
     - tutorials/sweep_parameter.md
     - tutorials/run_calibration.md
     - tutorials/use_calibration.md
-    - tutorials/filling_an_ingest_form.md
     #- Get Started: tutorials/intro.ipynb # the topic following index.md sometimes requires an explicit title
   #- Glossary: glossary.md
   # API Reference will automatically be generated and added to the TOC

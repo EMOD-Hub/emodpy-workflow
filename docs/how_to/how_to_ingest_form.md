@@ -1,6 +1,6 @@
 # Ingest Form How-to guides
 
-The [filling an ingest form tutorial](../tutorials/filling_an_ingest_form.md) covers the context in which the macros
+The [filling an ingest form reference](../reference/filling_an_ingest_form.md) covers the context in which the macros
 noted in this how-to are used.  
 
 ## How to generate or delete observation data sheets
