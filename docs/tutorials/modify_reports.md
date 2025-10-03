@@ -52,8 +52,8 @@ def build_reports(reporters: Reporters):
 !!! Important
     Each report can only have at most ONE configuration. Duplicative configurations will generate an error.
 
-We first remove the existing report that we do not want. Then we add a new definition of the report to replace it. For
-example, if we want to add information about pregnancies and potential mothers in the model, we copy/paste the 
+First, remove the existing report that you do not want. Then we add a new definition of the report to replace it. For
+example, if you want to add information about pregnancies and potential mothers in the model, copy/paste the 
 **InsetChart** definition from the Zambia country model and modify the appropriate parameter 
 (**include_pregnancies=True**) (labeled below with **NEW CODE**):
 
