@@ -4,6 +4,7 @@ Creates a new frame using the specified country model
 Sample usage:
 python -m emod_workflow.scripts.new_frame --country COUNTRY --dest DEST_FRAME
 """
+import warnings
 
 from emodpy_workflow.lib.utils.runtime import create_new_frame_from_country_model
 
@@ -31,8 +32,10 @@ def verify_country_model_exits(country_model: str):
 
 def main(args):
     if not verify_country_model_exits(country_model=args.country_model):
-        raise Exception(f"Country model with name: {args.country_model} does not exist. "
-                        f"It must have the exact spelling and capitalization of an emodpy-hiv country model class.")
+        warnings.warn(f"Country model with name: {args.country_model} does not exist in emodpy-hiv. It must have the "
+                      f"exact spelling "
+                      f"and capitalization of an emodpy-hiv country model class or one that you create and import to"
+                      f"your frame via manual frame edits.", stacklevel=2)
     create_new_frame_from_country_model(country_model=args.country_model, new_frame_name=args.dest_frame)
     print(f'Created new frame: {args.dest_frame} using country model: {args.country_model}')
 
