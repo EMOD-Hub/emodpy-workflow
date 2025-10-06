@@ -1,40 +1,37 @@
 # Modify Configuration Parameters
 
-## What are Configuration Parameters?
-
 Configuration parameters are simulation-wide parameters that affect how EMOD runs at a fundamental level. These include
 parameters related, but not limited to:
 
-* Model duration, timestep length, and when the model starts
+* Model duration, timestep length, and simulation start time
 * How a disease progresses and transmits
 * Whether agents can be born, age, and/or die
-* Output report specifications
 
-## Modifying a Configuration Parameter
+# Overview
 
-Configuration parameters are assigned values either in a country model or in a project frame, in one of two functions
-(in both locations): `initialize_config` and `get_config_parameterized_calls`.
+Configuration parameters are assigned values in functions `initialize_config` and `get_config_parameterized_calls` in a
+frame, however, it is common practice to set default/initial values in the country model versions of these methods.
 
-### Example
+# Example
 
-In this example we update the value of configuration parameter named **Base_Infectivity**, which alters how infectious
+In this example, we update the value of configuration parameter named **Base_Infectivity**, which alters how infectious
 a disease is at a fundamental level (before any other modifiers apply).
 
-#### Create a new project and baseline frame
+## Prerequisites
 
-```bash 
-python -m emodpy_workflow.scripts.new_project -d configuration_tutorial
-cd configuration_tutorial
-python -m emodpy_workflow.scripts.new_frame --country Zambia --dest baseline
-```
+This tutorial requires you to have done the following:
 
-#### Extend the baseline frame for alteration
+- [Setup and installed emodpy-workflow](setup.md)
+- [Created a project and a frame](create_project.md)
+- [Learned how to run EMOD](run_emod.md)
+
+## Extend the baseline frame for alteration
 
 ```bash 
 python -m emodpy_workflow.scripts.extend_frame --source baseline --dest more_infectious
 ```
 
-#### Edit the frame config.py
+## Edit the frame config.py
 
 Here we edit the `initialize_config` function, opting to not make a hyperparameter for setting `Base_Infectivity` for
 simplicity. An alternative example that makes a hyperparameter is located at 
@@ -69,23 +66,28 @@ def build_reports(reporters: Reporters):
     return reporters
 ```
 
-#### Run EMOD
+## Run EMOD
 
-We will run the **baseline** frame and **more_infectious** frame:
+We will run the **baseline** frame and **more_infectious** frames:
 
 ```bash
-python -m emodpy_workflow.scripts.run -f baseline,more_infectious -N ConfigUpdate -o config_output -p ContainerPlatform -d output/InsetChart.json
+python -m emodpy_workflow.scripts.run -f baseline -N ConfigUpdate -o config_baseline_output -p ContainerPlatform -d output/InsetChart.json
 ```
 
-#### Compare InsetChart.json
+```bash
+python -m emodpy_workflow.scripts.run -f more_infectious -N ConfigUpdate -o config_more_infectious_output -p ContainerPlatform -d output/InsetChart.json
+```
+
+
+## Compare InsetChart.json
 
 Run:
 
 ```bash
-python -m emodpy_hiv.plotting.plot_inset_chart_mean_compare config_output/ConfigUpdate--0/InsetChart/InsetChart_sample00000_run00001.json config_output/ConfigUpdate--1/InsetChart/InsetChart_sample00000_run00001.json
+python -m emodpy_hiv.plotting.plot_inset_chart config_baseline_output/ConfigUpdate--0/InsetChart/InsetChart_sample00000_run00001.json config_more_infectious_output/ConfigUpdate--0/InsetChart/InsetChart_sample00000_run00001.json
 ```
 
-Blue below represents the **more_infectious** frame and green represents the frame **baseline**. As can be seen, highly
+Blue below represents the **more_infectious** frame and red represents the frame **baseline**. As can be seen, highly
 infectious HIV results in higher infection rates and mortality.
 
 ![image](../images/InsetChart_Compare--more_infectious.png)
