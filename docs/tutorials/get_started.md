@@ -53,7 +53,7 @@ The campaign is where users make most of their changes.  It is where you determi
 the "when, why, where, to whom, and what" of interventions.
 The ["modify campaign: minimal campaign"](modify_campaign_1_minimal_campaign.md), 
 ["modify campaign: add HIV vaccine"](modify_campaign_2_add_vaccine.md), and
-["modify campaign: new country model"](modify_campaign_3_new_country_model.md)
+["modify campaign: modify country model"](modify_campaign_3_modify_country_model.md)
 tutorials will teach you how to things
 like add an intervention or change a state of the cascade of care.
 
