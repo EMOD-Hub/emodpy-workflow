@@ -1,7 +1,7 @@
-## Public a new country model
+## Publish a new country model
 
 To publish a new country model, you can follow the steps below. This example uses the `ZambiaWithLongLastingPrep` country model in 
-[Modify Campaign 3: New Country Model](../tutorials/modify_campaign_3_new_country_model.md) tutorial.
+[Modify Campaign 3: Modify Country Model](../tutorials/modify_campaign_3_modify_country_model.md) tutorial.
 
 1. Move `zambia_withlong_lasting_prep.py` to `/emodpy-hiv/emodpy_hiv/countries/zambia_withlong_lasting_prep/zambia_withlong_lasting_prep.py`
 

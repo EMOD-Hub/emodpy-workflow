@@ -6,7 +6,7 @@ A **country model** in `emodpy-hiv` encapsulates campaign logic specific to a se
 Subclassing allows you to override methods like `add_state_HCTUptakeAtDebut()` to customize intervention logic.
 
 You can find country models in the `emodpy_hiv/country` directory. Each country model is a subclass of the base 
-`Country` class and implements methods to define the cascade of care and other interventions.You can create a new 
+`Country` class and implements methods to define the cascade of care and other interventions. You can create a new 
 country model by subclassing an existing one and overriding specific methods to change behavior. This allows you to 
 tailor the campaign logic to different settings or scenarios, which has more control than editing the campaign.py 
 inside the frame. Moreover, country models are inherently more shareable and reusable between researchers as they can 
