@@ -23,13 +23,13 @@ python -m emodpy_workflow.scripts.extend_frame --source baseline --dest vaccine
 
 ### b. Add HIV vaccine directly
 
-Modify `campaign.py` under `/workspaces/emodpy-workflow/my_project/frames/vaccine` folder to include a function that 
-adds a vaccine intervention. This example adds:
+Modify `campaign.py` under `my_project/frames/vaccine` folder to include a function that 
+adds a vaccine intervention. This tutorial adds:
 
 - Add a ControlledVaccine with a constant WaningConfig.
-- Set initial efficacy = 1.0 by default.
+- Set initial efficacy = 1.0 as default.
 - Distribute the vaccine when the person sexually debuts - on the `STIDebut` event.
-- Start at year 2026.
+- Start listening and distributing the vaccine on January 1st, 2026.
 - Make initial efficacy a hyperparameter of the method.
 
 Here is an example of how to implement this: (add the following import lines and function to `campaign.py`)
@@ -55,7 +55,8 @@ def add_hiv_vaccine(campaign, vaccine_efficacy=1.0):
 ```
 
 In the same `campaign.py` file, update the `get_campaign_parameterized_calls` function by adding a call to 
-`add_hiv_vaccine` as shown below. Insert the new `ParameterizedCall` after the existing calls:
+`add_hiv_vaccine` (see line 4 in the code snippet below). Insert the new `ParameterizedCall` after the existing 
+calls (see line 5). This makes `vaccine_efficacy` a hyperparameter that can be modified when running the simulation:
 
 ```python linenums="1"
 def get_campaign_parameterized_calls(campaign):
@@ -130,4 +131,4 @@ You have successfully added an HIV vaccine to the campaign inside a frame direct
 following options:
 - Experiment with different vaccine efficacies by modifying the `vaccine_efficacy` hyperparameter when running the 
 simulation. Please see the [Sweep Parameter](./sweep_parameter.md) tutorial for more details.
-- Learn how to update the campaign with a new CountryModel in the [Modify Campaign: New Country Model](./modify_campaign_3_new_country_model.md) tutorial.
+- Learn how to update the campaign by modifying the CountryModel in the [Modify Campaign: Modify Country Model](./modify_campaign_3_modify_country_model.md) tutorial.

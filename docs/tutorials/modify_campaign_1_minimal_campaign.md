@@ -36,25 +36,31 @@ Before starting this tutorial, please complete the following:
 - [Create project](./create_project.md) tutorial to create a new project with a baseline frame.
 - [Run EMOD](./run_emod.md) tutorial to understand how to run simulations and plot results with baseline frame.
 
-## Minimal campaign example: Removing all campaign features
-This example demonstrates how to create a minimal campaign by removing all campaign features. This approach is useful 
+## Minimal campaign tutorial: Removing all campaign features
+This tutorial demonstrates how to create a minimal campaign by removing all campaign features. This approach is useful 
 for establishing a baseline simulation without any interventions, triggers, or programmatic activities.
 
 ### a. Extend frame
 
-To create a frame called `minimal_campaign` extended from the baseline, run:
+To create a frame called `minimal_campaign` extended from the baseline, run the following command in the project 
+directory:
 
 ```bash
 python -m emodpy_workflow.scripts.extend_frame --source baseline --dest minimal_campaign
 ```
 
 This inherits the `baseline` configuration (similar to Python class inheritance) and allows you to remove or simplify 
-the CoC logic in `minimal_campaign`. For this example, we will remove all campaign features.
+the CoC logic in `minimal_campaign`. For this tutorial, we will remove all campaign features.
+
+### b. Modify campaign
 
 In the `frames/minimal_campaign` directory, open `campaign.py`. Remove all campaign elements from the country model by 
-updating the `get_campaign_parameterized_calls` function to return an empty list. This ensures no interventions or 
-events are included in the campaign, while still calling the country model's `initialize_campaign` function to retain 
-essential setup (such as Base_Year).
+updating the `get_campaign_parameterized_calls` function to return an empty list. We comment out the line that calls the
+`source_frame.model.campaign_parameterizer` function, which adds all the campaign elements from the country model and 
+add simply return an empty list (see line 2 - 5 in the code snippet below).
+
+This ensures no interventions or events are included in the campaign, while still calling the country model's 
+`initialize_campaign` function to retain essential setup (such as Base_Year).
 
 ```python
 def get_campaign_parameterized_calls(campaign: emod_api.campaign) -> List[ParameterizedCall]:
@@ -64,7 +70,7 @@ def get_campaign_parameterized_calls(campaign: emod_api.campaign) -> List[Parame
     return parameterized_calls
 ```
 
-### b. Run EMOD
+### c. Run EMOD
 
 Run the simulation using the following command:
 
@@ -74,7 +80,7 @@ python -m emodpy_workflow.scripts.run -N MinimalCampaign -f minimal_campaign -o 
 
 Please see the [run EMOD](./run_emod.md) tutorial for more details on this command.
 
-### c. Plot InsetChart
+### d. Plot InsetChart
 
 After running the simulation, you can examine the results by plotting the **InsetChart** to compare the minimal campaign 
 with the baseline.
