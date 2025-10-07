@@ -217,12 +217,14 @@ On the left side is the original function from `ZambiaForTraining`, and on the r
 
 ![img_1.png](../images/HCT_Uptake.png)
 
+!!! Important
+    In this tutorial, the `ZambiaForTraining` class serves as the base for `ZambiaWithLongLastingPrep`. 
+    `ZambiaForTraining` is similar to the `Zambia` country model but utilizes a smaller population to accelerate 
+    simulation time.
+
+    You may select any country model class to use as a base class in your projects.
+
 Here is a complete example of the `zambia_withlong_lasting_prep.py` file with line numbers for easier reference:
-
-*In this tutorial, the `ZambiaForTraining` class serves as the base for `ZambiaWithLongLastingPrep`. `ZambiaForTraining` is similar to the 
-`Zambia` country model but utilizes a smaller population to accelerate simulation time.* 
-
-*You may select any country model class to use as a base class in your projects.*
 
 ```python linenums="1"
 import emod_api
@@ -340,9 +342,10 @@ Now the `ZambiaWithLongLastingPrep` country model has been created, it is not ye
 `emodpy-hiv`. To use this new country model in the `ZambiaWithLongLastingPrep_coc` frame, you need to update the frame 
 to reference it. For simplicity in this tutorial, move the file to the frame directory and import it directly in `campaign.py`.
 
-*Ideally, if you want to make the new country model reusable, you can put it in the `emodpy_hiv/country` directory and 
-import it in `campaign.py`. Please see [step g](#g-optional-public-zambiawithlonglastingprep-country-model) for more 
-details. For the current step in this tutorial, we will keep it simple and just move the file to the frame directory.*
+!!! Important
+    Ideally, if you want to make the new country model reusable, you can put it in the `emodpy_hiv/country` directory and 
+    import it in `campaign.py`. Please see [step g](#g-optional-public-zambiawithlonglastingprep-country-model) for more 
+    details. For the current step in this tutorial, we will keep it simple and just move the file to the frame directory.
 
 Modify the import statement in `campaign.py`, `config.py`, and `demographics.py` to import the `ZambiaWithLongLastingPrep` country 
 model:
@@ -368,13 +371,13 @@ Please see the [run EMOD](./run_emod.md) tutorial for more details on this comma
 
 After running the simulation, you can examine the results by plotting the **InsetChart** to compare the `ZambiaWithLongLastingPrep_coc` frame 
 with the baseline.
-Download the **InsetChart** to the `results/ZambiaWithLongLastingPrep_coc` directory:
 
+1. Download the **InsetChart** to the `results/ZambiaWithLongLastingPrep_coc` directory:
 ```bash
 python -m emodpy_workflow.scripts.download -d output/InsetChart.json -r results/ZambiaWithLongLastingPrep_coc/experiment_index.csv -p ContainerPlatform
 ```
 
-Use the plotting tool to compare the output with the baseline:
+2. Use the plotting tool to compare the output with the baseline:
 
 ```bash
 python -m emodpy_hiv.plotting.plot_inset_chart results/my_first_run/my_first_suite--0/InsetChart/InsetChart_sample00000_run00001.json -d results/ZambiaWithLongLastingPrep_coc/ZambiaWithLongLastingPrep--0/InsetChart/ -t "InsetChart-ZambiaWithLongLastingPrep_coc" -o images/ZambiaWithLongLastingPrep_coc
@@ -390,12 +393,12 @@ is the baseline and the blue line is the `ZambiaWithLongLastingPrep_coc` frame.
 Next, we plot the number of infected people from **ReportHIVByAgeAndGender** across ages to highlight that it takes decades
 for older age group infection counts to stabilize in response to the ZambiaWithLongLastingPrep campaign.
 
-You need to download the **ReportHIVByAgeAndGender** to the `results/ZambiaWithLongLastingPrep_coc` directory:
-
+1. Download the **ReportHIVByAgeAndGender** to the `results/ZambiaWithLongLastingPrep_coc` directory:
 ```bash
 python -m emodpy_workflow.scripts.download -d output/ReportHIVByAgeAndGender.csv -r results/ZambiaWithLongLastingPrep_coc/experiment_index.csv -p ContainerPlatform
 ```
-Visualize infection counts across age groups:
+
+2. Visualize infection counts across age groups:
 
 ```bash
 python -m emodpy_hiv.plotting.plot_hiv_by_age_and_gender results/ZambiaWithLongLastingPrep_coc/ZambiaWithLongLastingPrep--0/ReportHIVByAgeAndGender/ -p prevalence -a -m -o images/ZambiaWithLongLastingPrep_coc
@@ -409,7 +412,7 @@ Please refer to [How to publish a new country model](../how_to/how_to_publish_ne
 
 ## Conclusion
 
-The 3 campaign tutorials demonstrated how to modify campaign logic in EMOD simulations using `emodpy_workflow`, including 
+The 3 campaign tutorials demonstrated how to modify campaign logic in **EMOD** simulations using `emodpy_workflow`, including 
 creating minimal campaigns, adding interventions directly, and customizing country models for advanced scenarios. By 
 mastering these techniques, you can tailor simulations to specific research questions and programmatic needs.
 
@@ -419,4 +422,4 @@ For further customization, refer to the following tutorials:
 - [Modify Demographics](./modify_demographics.md): Change population structure and attributes.
 - [Modify Reports](./modify_reports.md): Customize output reports and data collection.
 
-Combining these approaches enables comprehensive control over your EMOD workflows and simulation outcomes.
+Combining these approaches enables comprehensive control over your **EMOD** workflows and simulation outcomes.

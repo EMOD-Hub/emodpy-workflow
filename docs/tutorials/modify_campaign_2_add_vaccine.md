@@ -93,13 +93,11 @@ After running the simulation, you can examine the results by plotting the **Inse
 the baseline.
 
 1. Download the **InsetChart** to the `results/vaccine` directory:
-
 ```bash
 python -m emodpy_workflow.scripts.download -d output/InsetChart.json -r results/vaccine/experiment_index.csv -p ContainerPlatform
 ```
 
 2. Plot **InsetChart** and compare with baseline:
-
 ```bash
 python -m emodpy_hiv.plotting.plot_inset_chart results/my_first_run/my_first_suite--0/InsetChart/InsetChart_sample00000_run00001.json -d results/vaccine/Vaccine--0/InsetChart -t "InsetChart-vaccine" -o images/vaccine
 ```
@@ -114,15 +112,15 @@ Visualize results:
 You can plot **ReportHIVByAgeAndGender** so you can look at infection count across age groups.
 
 1.  Download the **ReportHIVByAgeAndGender** to the `results/vaccine` directory:
-
 ```bash
 python -m emodpy_workflow.scripts.download -d output/ReportHIVByAgeAndGender.csv -r results/vaccine/experiment_index.csv -p ContainerPlatform
 ```
-2. Visualize infection counts across age groups:
 
+2. Visualize infection counts across age groups:
 ```bash
 python -m emodpy_hiv.plotting.plot_hiv_by_age_and_gender results/vaccine/Vaccine--0/ReportHIVByAgeAndGender/ -p prevalence -a -m -o images/vaccine
 ```
+
 Here is an example of what you might see in the **ReportHIVByAgeAndGender** for vaccine frame:
 ![vaccine_age_group.png](../images/vaccine_age_group.png)
 

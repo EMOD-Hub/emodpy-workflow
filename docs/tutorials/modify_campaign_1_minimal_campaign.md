@@ -86,13 +86,11 @@ After running the simulation, you can examine the results by plotting the **Inse
 with the baseline.
 
 1. Download the InsetChart to the `results/minimal_campaign` directory:
-
 ```bash
 python -m emodpy_workflow.scripts.download -d output/InsetChart.json -r results/minimal_campaign/experiment_index.csv -p ContainerPlatform
 ```
 
 2. Use the plotting tool to compare the output with the baseline:
-
 ```bash
 python -m emodpy_hiv.plotting.plot_inset_chart results/my_first_run/my_first_suite--0/InsetChart/InsetChart_sample00000_run00001.json -d results/minimal_campaign/MinimalCampaign--0/InsetChart/ -t "InsetChart-minimal_campaign" -o images/minimal_campaign
 ```
