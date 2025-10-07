@@ -36,8 +36,10 @@ Make a new frame with `ZambiaWithLongLastingPrep` country model by running the f
 python -m emodpy_workflow.scripts.new_frame --country ZambiaWithLongLastingPrep --dest ZambiaWithLongLastingPrep_coc
 ```
 
-Since `ZambiaWithLongLastingPrep` is a country model that doesn't exist yet, the `emodpy_workflow` does not know where 
-to find it. You may get a warning saying this country model is not found. You can ignore this warning for now.
+!!! Important
+    Since `ZambiaWithLongLastingPrep` is a country model that doesn't exist yet, the `emodpy_workflow` does not know where 
+    to find it. You will get a warning saying that this country model cannot be found. This warning can be ignored for 
+    now, as you will creating it in the next section.
 
 ### b. Create ZambiaWithLongLastingPrep country model
 
