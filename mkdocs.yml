@@ -39,11 +39,10 @@ nav: # Navigation structure for the documentation
     - reference/commands.md
     - reference/projects.md
     - reference/frames.md
-    - reference/filling_an_ingest_form.md
     - reference/sweeps.md
     - reference/dtktools_comparison.md
     - reference/age_bin_format.md
-    - reference/filling_an_ingest_form.md
+    - reference/ingest_form.md
   - How-to:
     - how_to/how_to_index.md
     - how_to/how_to_make_project.md
@@ -66,7 +65,7 @@ nav: # Navigation structure for the documentation
     - tutorials/modify_campaign_1_minimal_campaign.md
     - tutorials/modify_campaign_2_add_vaccine.md
     - tutorials/modify_campaign_3_modify_country_model.md
-    - tutorials/using_parameterized_calls.md
+    - tutorials/use_parameterized_calls.md
     - tutorials/sweep_parameter.md
     - tutorials/run_calibration.md
     #- Get Started: tutorials/intro.ipynb # the topic following index.md sometimes requires an explicit title

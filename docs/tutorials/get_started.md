@@ -53,7 +53,7 @@ like add an intervention or change a state of the cascade of care.
 ## Make a parameter calibrate-able or sweep-able - ParameterizedCalls
 
 emodpy-workflow provides a standard way of calibrating or sweeping any parameter
-that is "available".  The ["using ParameterizedCall"](using_parameterized_calls.md)
+that is "available".  The ["using ParameterizedCall"](use_parameterized_calls.md)
 tutorial will how to make a parameter availabe.
 
 ## Sweep a parameter
