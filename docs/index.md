@@ -9,8 +9,8 @@ provides standard way of using EMOD-HIV.
 ## Other related documentation
 
 - [emodpy-hiv]()
-- [EMOD-HIV](https://docs.idmod.org/projects/emodpy-hiv/en/latest/)
-- [idmtools](https://docs.idmod.org/projects/idmtools/en/latest/index.html)
+- [EMOD-HIV][emodpy_hiv]
+- [idmtools][idmtools]
 
 ## Community
 
@@ -46,3 +46,7 @@ and an opportunity to build upon it for their own work. We make no representatio
 that the code works as intended or that we will provide support, address issues that
 are found, or accept pull requests.  You are welcome to create your own fork and modify
 the code to suit your own modeling needs as permitted under the MIT License.
+
+{%
+    include-markdown "bib.md"
+%}

@@ -247,7 +247,7 @@ If you execute that line, you should see something similar to:
 !!! Note
     This only works when using the Container Platform.  To see status
     when using other platforms, please see the
-    [Command Line Interface documentation](https://docs.idmod.org/projects/idmtools/en/latest/cli/cli_index.html)
+    [Command Line Interface documentation][idmtools_cli]
     for your platform.
 
 ## View the files produced when running an experiment
@@ -796,4 +796,6 @@ modify the simulation and run the model.
 - [Modify Configuration](modify_configuration.md)
 - [Modify Campaign](modify_campaign.md)
 
-
+{%
+    include-markdown "bib.md"
+%}
