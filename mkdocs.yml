@@ -111,7 +111,7 @@ plugins:
   - mkdocs-jupyter: # enables Jupyter notebooks to be rendered
       execute: true
       allow_errors: false # set to true to continue executing cells even if one fails
-      include-source: true
+      include_source: true
 
 copyright: Copyright &copy; 2025 Gates Foundation. All rights reserved.
 

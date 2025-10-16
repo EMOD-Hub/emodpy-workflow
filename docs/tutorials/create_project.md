@@ -319,7 +319,7 @@ country model.
     See the other tutorials on modifying the configuration:
 
     - [Modify Configuration](modify_configuration.md)
-    - [Modify Campaign](modify_campaign.md)
+    - [Modify Campaign](modify_campaign_1_minimal_campaign.md)
 
 ## Next up: Running your baseline frame
 
