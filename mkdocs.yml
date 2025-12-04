@@ -135,9 +135,8 @@ extra:
       link: https://linkedin.com/company/institute-disease-modeling
 
   analytics:
-    provider: google
-    property: G-SVDSQH04EM
-    tracking_id: # no tracking until we can implement OneTrust cookie consent
+    provider: custom
+    property: GTM-NK4K647
     feedback:
       title: Was this page helpful?
       ratings:
