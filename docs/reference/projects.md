@@ -63,7 +63,3 @@ ContainerPlatform) via argument to identify which resource to utilize.
 
 The new_project command will automatically create one that can then be modified.
 Details of the file format can be found [here][idmtools_config].
-
-{%
-    include-markdown "bib.md"
-%}
