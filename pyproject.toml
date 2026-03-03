@@ -15,14 +15,14 @@ keywords=["modeling", "IDM"]
 
 dependencies = [
     "idmtools_calibra~=2.0",
-    "emodpy-hiv~=2.0",
+    "emodpy-hiv~=3.0",
     "openpyxl==3.0.9",
     "seaborn",
     "scikit-learn",
     "scipy",
     "pandas~=2.2",
     "numpy~=2.0",
-    "urllib3<2.0" # ==1.26.14 # temporary hack to avoid error on BigPurple. https://github.com/urllib3/urllib3/issues/2168
+    "urllib3" # ==1.26.14 # temporary hack to avoid error on BigPurple. https://github.com/urllib3/urllib3/issues/2168
 ]
 license = "MIT"
 classifiers=[
