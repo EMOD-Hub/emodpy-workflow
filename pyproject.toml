@@ -7,7 +7,7 @@ name = "emodpy-workflow"
 version = "1.0.7"
 description = "IDM's emodpy modeling workflow scripts and supporting libraries"
 readme = "README.md"
-requires-python = ">=3.9"
+requires-python = ">=3.13"
 authors = [
     {name = "Clark Kirkman IV", email = "clark.kirkmand@gatesfoundation.org"}
 ]
