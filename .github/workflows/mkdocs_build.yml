@@ -1,4 +1,4 @@
-name: Build docs
+name: Build Docs
 
 on:
   pull_request:
@@ -14,15 +14,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
       - name: Setup python
         uses: actions/setup-python@v6
         with:
           python-version: '3.x'
       - name: Install packages
         run: |
-          python3 -m pip install --upgrade pip
-          python3 -m pip install .[docs] --extra-index-url=https://packages.idmod.org/api/pypi/pypi-production/simple
+          python -m pip install --upgrade pip
+          python -m pip install .[docs]
       - name: Build static files
         run: |
-          mkdocs build
+          python -m sphinx -T --keep-going -b html ./docs ./site
