@@ -144,11 +144,7 @@ def main(args):
             except AttributeError:
                 pass
             receipt.append({**frame_and_experiment_info, **overrides})
-
-    # Necessary only due to idmtools bug, e.g.,
-    # https://github.com/InstituteforDiseaseModeling/idmtools/issues/1653
-    suite.experiments.extend(experiments)
-
+            
     platform.run_items([suite])
     write_receipt(receipt=receipt, receipt_path=receipt_path)
 
