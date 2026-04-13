@@ -144,7 +144,6 @@ def main(args):
             except AttributeError:
                 pass
             receipt.append({**frame_and_experiment_info, **overrides})
-            
     platform.run_items([suite])
     write_receipt(receipt=receipt, receipt_path=receipt_path)
 
