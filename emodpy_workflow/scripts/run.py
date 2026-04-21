@@ -13,9 +13,7 @@ from idmtools.entities.templated_simulation import TemplatedSimulations
 from idmtools_calibra.utilities.mod_fn import ModFn
 from idmtools_calibra.utilities.parameter_set import ParameterSet, NaNDetectedError
 
-# ignore escape sequence warnings in the dolphin string
-# flake8: noqa: W605
-DOLPHIN = '''
+DOLPHIN = r'''
                                   _
                              _.-~~.)
        _.--~~~~~---....__  .' . .,'
