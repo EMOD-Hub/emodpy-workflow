@@ -12,9 +12,8 @@ theme:
   logo: images/EMOD_logo.png
   favicon: images/favicon.ico
   features:
-    # - navigation.footer
     - content.code.copy
-    - navigation.indexes  # enable parent index page for sections
+    # - navigation.footer
   palette:
     - scheme: default
       toggle:
@@ -29,9 +28,9 @@ theme:
       primary: black
       accent: light blue
 
-nav:  # Navigation structure for the documentation
-  - Home: index.md  # the rest of the nav illustrates a typical doc structure
-  - installation.md  # including the topic title is optional
+nav:
+  - Home: index.md
+  - installation.md
   - Reference:
     - reference/virtual_environments.md
     - reference/commands.md
@@ -83,6 +82,7 @@ markdown_extensions:
   - admonition:
   - attr_list:  # enables HTMl and CSS classes to inline elements
   - def_list:
+  - footnotes:
   - toc:
       toc_depth: 3
   - md_in_html:  # enables grids
@@ -127,8 +127,8 @@ extra:
   social:
     - icon: fontawesome/brands/github
       link: https://github.com/EMOD-Hub/
-    - icon: fontawesome/regular/envelope
-      link: mailto:idm@gatesfoundation.org
+    - icon: octicons/comment-discussion-24
+      link: https://github.com/EMOD-Hub/issues-and-discussions
     - icon: octicons/globe-24
       link: https://idmod.org
     - icon: simple/youtube

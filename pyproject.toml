@@ -9,11 +9,10 @@ description = "IDM's emodpy modeling workflow scripts and supporting libraries"
 readme = "README.md"
 requires-python = ">=3.11"
 authors = [
-    {name = "Clark Kirkman IV", email = "clark.kirkmand@gatesfoundation.org"}
+    {name = "Clark Kirkman IV", email = "clark.kirkmand@gatesfoundation.org"},
 ]
-keywords=["modeling", "IDM"]
-
-dependencies = [ #pandas and scikit-learn are dependencies of emodpy-hiv, so we don't need to specify them here
+keywords = ["modeling", "IDM"]
+dependencies = [
     "idmtools_calibra~=3.0",
     "emodpy-hiv~=3.1",
     "openpyxl==3.0.9",
@@ -22,13 +21,14 @@ dependencies = [ #pandas and scikit-learn are dependencies of emodpy-hiv, so we 
     "urllib3~=2.6"
 ]
 license = "MIT"
-classifiers=[
-        "Intended Audience :: Science/Research",
-        "Programming Language :: Python :: 3.11",
-        "Programming Language :: Python :: 3.12",
-        "Programming Language :: Python :: 3.13",
-        "Programming Language :: Python :: 3.14",
-        "Operating System :: OS Independent",
+classifiers = [
+    "Intended Audience :: Science/Research",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Operating System :: OS Independent",
 ]
 
 [project.optional-dependencies]
@@ -42,7 +42,7 @@ docs = [
     "mkdocs-jupyter",
 ]
 lint = [
-    "flake8~=7.3",
+    "flake8",
 ]
 test = [
     "parameterized~=0.9",
@@ -53,6 +53,7 @@ test = [
 
 [project.urls]
 Repository = "https://github.com/EMOD-Hub/emodpy-workflow"
+Documentation = "https://emod.idmod.org/emodpy-workflow/"
 Issues = "https://github.com/EMOD-Hub/issues-and-discussions/issues"
 
 [tool.setuptools.packages]
