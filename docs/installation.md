@@ -5,8 +5,8 @@
 The following is required:
 
 - Windows or Linux (Mac is loosely supported)
-- Python 3.13 (but also supports 3.11-3.14)
-- Docker (optional, but required for the Container Platform)
+- Python 3.13 (but also supports 3.11–3.14)
+- Docker (optional, but highly recommended — required to run EMOD locally on your computer)
 
 ### Python
 
@@ -16,35 +16,52 @@ To verify you have the correct version, enter the following command:
 python --version
 ```
 
-You should see something similar to the following and it should start with "3.13":
+You should see something similar to the following, and it should start with "3.13":
 
-```doscon
+```
 Python 3.13.2
 ```
 
-If you do not get that, you may need to provide the full path to the python executable
-or you may need to install it.  If you need the full path, please use the full path when creating the virtual environment below.
+If you do not get that, you may need to install Python 3.13. Download it from
+[python.org](https://www.python.org/downloads/) or contact your IT support.
 
 ### Docker
 
-If you want to run EMOD locally using the Container Platform, you will also need
-to install Docker.  Installation will require administrative privileges.  Follow the instructions on the Docker website:
+How you plan to run EMOD determines whether you need Docker. If you are running
+simulations on a **shared computing cluster** provided by your institution or
+organization, you do not need Docker and can skip this section. If you are running
+simulations on **your own computer**, you need Docker.
+
+Installation may require administrative privileges. If you don't have them, you may
+need IT support. Follow the instructions on the Docker website for your operating system:
 
 - [Windows](https://docs.docker.com/desktop/setup/install/windows-install/)
-    (You might be able to install WSL via the Docker Desktop installer.)
 - [Linux](https://docs.docker.com/desktop/setup/install/linux/)
 - [Mac](https://docs.docker.com/desktop/setup/install/mac-install/)
 
-!!! Warning
-    Installing can require downloading close to one gigabyte of data.  The first time
-    you use EMOD with the Container Platform it will download another half gigabyte.
+!!! warning
+    Installing Docker can require downloading close to one gigabyte of data. The first
+    time you run EMOD locally it will download another half gigabyte.
+
+#### Windows-specific setup
+
+Enable Developer Mode — required for Docker to work correctly:
+
+**Settings** → **Update & Security** → **For Developers** → select **Developer Mode**
+
+Enable long file path support (only needed if your file paths exceed 255 characters).
+This step may also require IT support:
+
+**Local Computer Policy** → **Computer Configuration** → **Administrative Templates**
+→ **System** → **Filesystem** → enable **Win32 long paths**
 
 ## Setup virtual environment
 
-The following commands will setup a
-[virtual environment](reference/virtual_environments.md).  You will want to do this for all of your new projects.
+A [virtual environment](reference/virtual_environments.md) keeps emodpy-workflow's software
+separate from other Python projects on your computer, preventing version conflicts.
+You will want to do this for all of your new projects.
 
-1. Create the virtual environment
+1. Create the virtual environment:
 
     ```
     python -m venv env
@@ -61,16 +78,16 @@ The following commands will setup a
         source env/bin/activate
         ```
 
-3. Ensure pip is up to date:
+3. Ensure Python's package installer is up to date:
 
     ```
     python -m pip install pip --upgrade
     ```
 
-## Install emodpy-workflow:
+## Install emodpy-workflow
 
-Use the following command to install emodpy-workflow from PyPi:
+Use the following command to install emodpy-workflow:
 
 ```
-python -m pip install emodpy-workflow 
+python -m pip install emodpy-workflow
 ```
